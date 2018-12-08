@@ -1,5 +1,5 @@
 export class Partner {
     constructor(
-        public Img: string
+        public img: string
     ){}
 }

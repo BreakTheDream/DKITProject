@@ -1,5 +1,5 @@
 export class Certificate {
     constructor(
-        public Img: string 
+        public img: string 
     ){}
 }

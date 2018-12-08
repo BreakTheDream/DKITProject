@@ -1,14 +1,27 @@
 export class Workshop {
     constructor(
-        public Id: number,
-        public Headline: string,
-        public Announce: string,  
-        public Content: string,
-        public ImgIcon: string,
-        public ImgPreview: string,
-        public DatePost: Date,
-        public DateStart: Date,
-        public DateEnd: Date,
-        public Count: number
+        public id: number,
+        public headline: string,
+        public announce: string,  
+        public content: string,
+        public imgIcon: string,
+        public imgPreview: string,
+        public datePost: Date,
+        public dateStart: Date,
+        public dateEnd: Date,
+        public count: number
     ) {}
+}
+
+export class WorkshopPreview {
+    constructor(
+        public id: number,
+        public headline: string,
+        public announce: string,
+        public imgIcon: string,
+        public datePost: Date,
+        public dateStart: Date,
+        public dateEnd: Date,
+        public count: number
+    ){}
 }

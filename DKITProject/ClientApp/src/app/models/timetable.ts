@@ -1,5 +1,5 @@
 export class Timetable {
     constructor(
-        public Img: string
+        public img: string
     ){}
 }

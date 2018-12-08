@@ -1,10 +1,10 @@
 export class Achievement {
     constructor(
-        public Id: number,
-        public Headline: string, 
-        public Announce: string,
-        public ImgPreview: string,
-        public Content: string,
-        public Images: string[]
+        public id: number,
+        public headline: string, 
+        public announce: string,
+        public imgPreview: string,
+        public content: string,
+        public images: string[]
     ){}
 }

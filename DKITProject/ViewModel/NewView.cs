@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace DKITProject.ViewModel
 {
@@ -9,7 +10,16 @@ namespace DKITProject.ViewModel
         public string Announce { get; set; }
         public string Content { get; set; }
         public string ImgPreview { get; set; }
-        public string[] Images { get; set; }
+        public ICollection<string> Images { get; set; }
+        public DateTime DatePost { get; set; }
+    }
+
+    public class NewViewPreview 
+    {
+        public int Id { get; set; }
+        public string Headline { get; set; }
+        public string Announce { get; set; }
+        public string ImgPreview { get; set; }
         public DateTime DatePost { get; set; }
     }
 }

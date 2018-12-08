@@ -1,8 +1,8 @@
 export class ControlNumber {
     constructor(
-        public Id: number,
-        public Count: number,
-        public SpecialtyId: number,
-        public SpecialtyName: string
+        public id: number,
+        public count: number,
+        public specialtyId: number,
+        public specialtyName: string
     ){}
 }

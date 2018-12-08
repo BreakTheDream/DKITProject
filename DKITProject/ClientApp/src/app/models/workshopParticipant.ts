@@ -1,8 +1,8 @@
 export class WorkshopParticipant {
     constructor(
-        public Id: number,
-        public FullName: string,
-        public Email: string,
-        public PhoneNumber: string
+        public id: number,
+        public fullName: string,
+        public email: string,
+        public phoneNumber: string
     ) {}
 }

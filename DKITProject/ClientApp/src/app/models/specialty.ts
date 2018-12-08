@@ -1,10 +1,19 @@
 export class Specialty {
     constructor(
-        public Id: number,
-        public Name: string,
-        public Announce: string, 
-        public Content: string,
-        public ImgIcon: string,
-        public ImgPreviev: string
+        public id: number,
+        public name: string,
+        public announce: string, 
+        public content: string,
+        public imgIcon: string,
+        public imgPreviev: string
+    ){}
+}
+
+export class SpecialtyPreview {
+    constructor(
+        public id: number,
+        public name: string,
+        public announce: string, 
+        public imgIcon: string
     ){}
 }

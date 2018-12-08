@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+
 namespace DKITProject.DAL.Models
 {
     public class Achievement
@@ -7,7 +10,7 @@ namespace DKITProject.DAL.Models
         public string Announce { get; set; }
         public string ImgPreview { get; set; }
         public string Content { get; set; }
-        public string[] Images { get; set; }
+        public string Images { get; set; }
         public bool Approved { get; set; }
     }
 }

@@ -1,11 +1,21 @@
 export class New {
     constructor(
-        public Id: number,
-        public Headline: string,
-        public Announce: string,
-        public Content: string,
-        public ImgPreview: string,
-        public Images: string[],
-        public DatePost: Date
+        public id: number,
+        public headline: string,
+        public announce: string,
+        public content: string,
+        public imgPreview: string,
+        public images: string[],
+        public datePost: Date
+    ){}
+}
+
+export class NewPreview {
+    constructor(
+        public id: number,
+        public headline: string,
+        public announce: string,
+        public imgPreview: string,
+        public datePost: Date
     ){}
 }
