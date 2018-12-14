@@ -23,11 +23,12 @@ namespace DKITProject.WebSite.Controllers
             context = _context;
         }
 
-        [HttpGet("api/newslist/{pages}")]
-        public IActionResult GetNewsList(int pages = 1) {
+        [HttpGet("api/newslist/{pageNumber}")]
+        public IActionResult GetNewsList(int pageNumber = 1) 
+        {
             var news = context.News.Where(n => n.Approved)
                 .OrderByDescending(n => n.DatePost)
-                .Skip(pageCount * (1 - 1))
+                .Skip(pageCount * (pageNumber - 1))
                 .Take(pageCount)
                 .Select(n => new NewViewPreview
                 {
@@ -40,6 +41,29 @@ namespace DKITProject.WebSite.Controllers
                 .ToList();
 
             return Ok(news);
+        }
+
+        [HttpGet("api/newbyid/{id}")]
+        public IActionResult GetNewById(int id)
+        {
+            if(id == null)
+                return BadRequest("Id is null");
+
+            var @new = context.News.FirstOrDefault(n => n.Id == id);
+
+            if(@new == null)
+                return BadRequest("New not found");
+
+            return Ok(new NewView 
+            {
+                Id = @new.Id,
+                Headline = @new.Headline,
+                Announce = @new.Announce,
+                Content = @new.Content,
+                ImgPreview = @new.ImgPreview,
+                Images = @new.Images.Split(','),
+                DatePost = @new.DatePost
+            });
         }
 
     }
