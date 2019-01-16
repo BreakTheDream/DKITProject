@@ -33,7 +33,7 @@ namespace DKITProject.WebSite.Controllers
                 .Select(n => new NewViewPreview
                 {
                     Id = n.Id,
-                    Announce = n.Announce,
+                    Content = n.Content,
                     Headline = n.Headline,
                     DatePost = n.DatePost,
                     ImgPreview = n.ImgPreview
@@ -58,7 +58,6 @@ namespace DKITProject.WebSite.Controllers
             {
                 Id = @new.Id,
                 Headline = @new.Headline,
-                Announce = @new.Announce,
                 Content = @new.Content,
                 ImgPreview = @new.ImgPreview,
                 Images = @new.Images.Split(','),

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DKITProject.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20181205191122_Initial")]
+    [Migration("20190116184056_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -29,8 +29,6 @@ namespace DKITProject.Migrations
 
                     b.Property<string>("Announce");
 
-                    b.Property<bool>("Approved");
-
                     b.Property<string>("Content");
 
                     b.Property<string>("Headline");
@@ -42,58 +40,6 @@ namespace DKITProject.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Achievements");
-                });
-
-            modelBuilder.Entity("DKITProject.DAL.Models.AdditionalEducation", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Announce");
-
-                    b.Property<string>("Content");
-
-                    b.Property<int>("Count");
-
-                    b.Property<DateTime>("DateEnd");
-
-                    b.Property<DateTime>("DatePost");
-
-                    b.Property<DateTime>("DateStart");
-
-                    b.Property<string>("Headline");
-
-                    b.Property<string>("ImgIcon");
-
-                    b.Property<string>("ImgPreview");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("AdditionalEducations");
-                });
-
-            modelBuilder.Entity("DKITProject.DAL.Models.AdditionalEducationParticipant", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("AdditionalEducationId");
-
-                    b.Property<int?>("AdditionalEducationId1");
-
-                    b.Property<string>("Email");
-
-                    b.Property<string>("FullName");
-
-                    b.Property<string>("PhoneNumber");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AdditionalEducationId1");
-
-                    b.ToTable("AdditionalEducationParticipants");
                 });
 
             modelBuilder.Entity("DKITProject.DAL.Models.Certificate", b =>
@@ -127,6 +73,37 @@ namespace DKITProject.Migrations
                     b.ToTable("ControlNumbers");
                 });
 
+            modelBuilder.Entity("DKITProject.DAL.Models.Event", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Announce");
+
+                    b.Property<string>("Content");
+
+                    b.Property<int>("Count");
+
+                    b.Property<DateTime>("DateEnd");
+
+                    b.Property<DateTime>("DatePost");
+
+                    b.Property<DateTime>("DateStart");
+
+                    b.Property<int>("EventType");
+
+                    b.Property<string>("Headline");
+
+                    b.Property<string>("ImgIcon");
+
+                    b.Property<string>("ImgPreview");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Events");
+                });
+
             modelBuilder.Entity("DKITProject.DAL.Models.Group", b =>
                 {
                     b.Property<int>("Id")
@@ -146,8 +123,6 @@ namespace DKITProject.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Announce");
-
                     b.Property<bool>("Approved");
 
                     b.Property<string>("Content");
@@ -163,6 +138,29 @@ namespace DKITProject.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("News");
+                });
+
+            modelBuilder.Entity("DKITProject.DAL.Models.Participant", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Email");
+
+                    b.Property<int>("EventId");
+
+                    b.Property<int>("EventType");
+
+                    b.Property<string>("FullName");
+
+                    b.Property<string>("PhoneNumber");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EventId");
+
+                    b.ToTable("Participants");
                 });
 
             modelBuilder.Entity("DKITProject.DAL.Models.Partner", b =>
@@ -249,6 +247,8 @@ namespace DKITProject.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Avatar");
+
                     b.Property<string>("FullName");
 
                     b.Property<int>("GroupId");
@@ -268,70 +268,19 @@ namespace DKITProject.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("DKITProject.DAL.Models.Workshop", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Announce");
-
-                    b.Property<string>("Content");
-
-                    b.Property<int>("Count");
-
-                    b.Property<DateTime>("DateEnd");
-
-                    b.Property<DateTime>("DatePost");
-
-                    b.Property<DateTime>("DateStart");
-
-                    b.Property<string>("Headline");
-
-                    b.Property<string>("ImgIcon");
-
-                    b.Property<string>("ImgPreview");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Workshops");
-                });
-
-            modelBuilder.Entity("DKITProject.DAL.Models.WorkshopParticipant", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Email");
-
-                    b.Property<string>("FullName");
-
-                    b.Property<string>("PhoneNumber");
-
-                    b.Property<string>("WorkshopId");
-
-                    b.Property<int?>("WorkshopId1");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("WorkshopId1");
-
-                    b.ToTable("WorkshopParticipants");
-                });
-
-            modelBuilder.Entity("DKITProject.DAL.Models.AdditionalEducationParticipant", b =>
-                {
-                    b.HasOne("DKITProject.DAL.Models.AdditionalEducation", "AdditionalEducation")
-                        .WithMany("AdditionalEducationParticipants")
-                        .HasForeignKey("AdditionalEducationId1");
-                });
-
             modelBuilder.Entity("DKITProject.DAL.Models.ControlNumber", b =>
                 {
                     b.HasOne("DKITProject.DAL.Models.Specialty", "Specialty")
                         .WithOne("ControlNumber")
                         .HasForeignKey("DKITProject.DAL.Models.ControlNumber", "SpecialtyId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("DKITProject.DAL.Models.Participant", b =>
+                {
+                    b.HasOne("DKITProject.DAL.Models.Event", "Event")
+                        .WithMany("Participants")
+                        .HasForeignKey("EventId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -353,13 +302,6 @@ namespace DKITProject.Migrations
                         .WithMany("Users")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("DKITProject.DAL.Models.WorkshopParticipant", b =>
-                {
-                    b.HasOne("DKITProject.DAL.Models.Workshop", "Workshop")
-                        .WithMany("WorkshopParticipants")
-                        .HasForeignKey("WorkshopId1");
                 });
 #pragma warning restore 612, 618
         }

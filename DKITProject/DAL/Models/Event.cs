@@ -1,8 +1,9 @@
-using System;
+﻿using System;
+using DKITProject.Enums;
 
 namespace DKITProject.DAL.Models
 {
-    public class AdditionalEducation
+    public class Event
     {
         public int Id { get; set; }
         public string Headline { get; set; }
@@ -14,6 +15,7 @@ namespace DKITProject.DAL.Models
         public DateTime DateStart { get; set; }
         public DateTime DateEnd { get; set; }
         public int Count { get; set; }
-        public AdditionalEducationParticipant[] AdditionalEducationParticipants { get; set; }
+        public EventTypes EventType { get; set; }
+        public Participant[] Participants { get; set; }
     }
 }

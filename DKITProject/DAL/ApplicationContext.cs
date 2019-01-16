@@ -7,8 +7,6 @@ namespace DKITProject.DAL
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Achievement> Achievements { get; set; }
-        public DbSet<AdditionalEducation> AdditionalEducations { get; set; }
-        public DbSet<AdditionalEducationParticipant> AdditionalEducationParticipants { get; set; }
         public DbSet<Certificate> Certificates { get; set; }
         public DbSet<ControlNumber> ControlNumbers { get; set; }
         public DbSet<Group> Groups { get; set; }
@@ -18,8 +16,8 @@ namespace DKITProject.DAL
         public DbSet<Specialty> Specialties { get; set; }
         public DbSet<Timetable> Timetables { get; set; }
         public DbSet<TimetableType> TimetableTypes { get; set; }
-        public DbSet<Workshop> Workshops { get; set; }
-        public DbSet<WorkshopParticipant> WorkshopParticipants { get; set; }
+        public DbSet<Event> Events { get; set; }
+        public DbSet<Participant> Participants { get; set; }
 
         public ApplicationContext(DbContextOptions<ApplicationContext> options)
             :base(options)

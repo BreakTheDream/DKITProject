@@ -11,6 +11,5 @@ namespace DKITProject.DAL.Models
         public string ImgPreview { get; set; }
         public string Content { get; set; }
         public string Images { get; set; }
-        public bool Approved { get; set; }
     }
 }

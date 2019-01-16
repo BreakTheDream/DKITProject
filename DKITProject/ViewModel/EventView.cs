@@ -1,8 +1,9 @@
-using System;
+﻿using System;
+using DKITProject.Enums;
 
 namespace DKITProject.ViewModel
 {
-    public class AdditionalEducationView
+    public class EventView
     {
         public int Id { get; set; }
         public string Headline { get; set; }
@@ -13,9 +14,10 @@ namespace DKITProject.ViewModel
         public DateTime DateStart { get; set; }
         public DateTime DateEnd { get; set; }
         public int Count { get; set; }
+        public EventTypes EventType { get; set; }
     }
 
-    public class AdditionalEducationViewPreview 
+    public class EventViewPreview
     {
         public int Id { get; set; }
         public string Headline { get; set; }

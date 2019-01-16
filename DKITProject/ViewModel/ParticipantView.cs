@@ -1,6 +1,8 @@
+﻿using System;
+
 namespace DKITProject.ViewModel
 {
-    public class WorkshopParticipantView
+    public class ParticipantView
     {
         public int Id { get; set; }
         public string FullName { get; set; }

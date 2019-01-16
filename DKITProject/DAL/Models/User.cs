@@ -10,5 +10,6 @@ namespace DKITProject.DAL.Models
         public Group Group { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
+        public string Avatar { get; set; }
     }
 }
