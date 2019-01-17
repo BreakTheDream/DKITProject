@@ -4,7 +4,6 @@ export class Specialty {
         public name: string,
         public announce: string, 
         public content: string,
-        public imgIcon: string,
         public imgPreviev: string
     ){}
 }

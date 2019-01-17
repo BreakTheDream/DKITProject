@@ -1,4 +1,4 @@
-export class WorkshopParticipant {
+export class Participant {
     constructor(
         public id: number,
         public fullName: string,
