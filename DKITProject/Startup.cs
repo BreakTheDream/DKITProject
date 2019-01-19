@@ -6,6 +6,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using DKITProject.DAL;
+using DKITProject.Logger;
+using Microsoft.Extensions.Logging;
 
 namespace DKITProject
 {
@@ -27,6 +29,8 @@ namespace DKITProject
                 options.UseSqlServer(connection)
             );
 
+
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddSpaStaticFiles(configuration =>
@@ -35,8 +39,11 @@ namespace DKITProject
             });
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            loggerFactory.AddFile(Configuration.GetValue<string>("LoggerPath") + "log.txt");
+            var logger = loggerFactory.CreateLogger("FileLogger");
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
