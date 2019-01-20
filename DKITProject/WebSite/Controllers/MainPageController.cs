@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using DKITProject.DAL;
 using DKITProject.ViewModel;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace DKITProject.WebSite.Controllers
 {
@@ -15,16 +16,17 @@ namespace DKITProject.WebSite.Controllers
     {
         private ApplicationContext context;
         private const int countItems = 5;
+        private ILogger logger;
 
-        public MainPageController(ApplicationContext _context)
+        public MainPageController(ApplicationContext _context, ILoggerFactory loggerFactory)
         {
             context = _context;
+            logger = loggerFactory.CreateLogger("FileLogger");
         }
 
         [HttpGet]
         public async Task<IActionResult> GetMainPageInfoAsync()
         {
-
             ICollection<SpecialtyViewPreview> specialties = await GetSpecialties();
             ICollection<NewViewPreview> news = await GetNews();
             ICollection<PartnerView> partners = await GetPartners();
@@ -39,61 +41,106 @@ namespace DKITProject.WebSite.Controllers
             };
 
             return Ok(mainPaigInfo);
+
         }
 
         public Task<List<NewViewPreview>> GetNews()
         {
-            var news = context.News.Where(n => n.Approved)
-                .OrderByDescending(n => n.DatePost)
-                .Take(countItems)
-                .Select(n => new NewViewPreview
-                {
-                    Id = n.Id,
-                    Content = n.Content,
-                    Headline = n.Headline,
-                    DatePost = n.DatePost,
-                    ImgPreview = n.ImgPreview
-                })
-            .ToListAsync();
+            try
+            {
+                var news = context.News.Where(n => n.Approved)
+                    .OrderByDescending(n => n.DatePost)
+                    .Take(countItems)
+                    .Select(n => new NewViewPreview
+                    {
+                        Id = n.Id,
+                        Content = n.Content,
+                        Headline = n.Headline,
+                        DatePost = n.DatePost,
+                        ImgPreview = n.ImgPreview
+                    })
+                .ToListAsync();
 
-            return news;
+                if (news == null)
+                    throw new NullReferenceException();
+
+                return news;
+            } 
+            catch (Exception exception)
+            {
+                logger.LogInformation(exception, "Exception in GetNews method:" + exception.Message, null);
+                return Task.FromResult<List<NewViewPreview>>(null);
+            }
         }
 
         public Task<List<SpecialtyViewPreview>> GetSpecialties()
         {
-            var specialties = context.Specialties
-                .Select(s => new SpecialtyViewPreview
-                {
-                    Id = s.Id,
-                    Name = s.Name,
-                    Announce = s.Announce,
-                    ImgIcon = s.ImgIcon
-                })
-                .ToListAsync();
+            try
+            {
+                var specialties = context.Specialties
+                    .Select(s => new SpecialtyViewPreview
+                    {
+                        Id = s.Id,
+                        Name = s.Name,
+                        Announce = s.Announce,
+                        ImgIcon = s.ImgIcon
+                    })
+                    .ToListAsync();
 
-            return specialties;
+                if (specialties == null)
+                    throw new NullReferenceException();
+
+                return specialties;
+            }
+            catch (Exception exception)
+            {
+                logger.LogInformation(exception, "Exception in GetSpecialties method:" + exception.Message, null);
+                return Task.FromResult<List<SpecialtyViewPreview>>(null);
+            }
         }
 
         public Task<List<PartnerView>> GetPartners() 
         {
-            var partners = context.Partners.Select(p => new PartnerView 
+            try
             {
-                Img = p.Img
-            })
-            .ToListAsync();
+                var partners = context.Partners.Select(p => new PartnerView
+                {
+                    Img = p.Img
+                })
+                .ToListAsync();
 
-            return partners;
+                if (partners == null)
+                    throw new NullReferenceException();
+
+                return partners;
+            }
+            catch (Exception exception)
+            {
+                logger.LogInformation(exception, "Exception in GetPartners method:" + exception.Message, null);
+                return Task.FromResult<List<PartnerView>>(null);
+            }
         }
 
         public Task<List<CertificateView>> GetCertificates() 
         {
-            var certificates = context.Certificates.Select(c => new CertificateView
+            try
             {
-                Img = c.Img
-            })
-            .ToListAsync();
+                var certificates = context.Certificates.Select(c => new CertificateView
+                {
+                    Img = c.Img
+                })
+                .ToListAsync();
 
-            return certificates;
+                if (certificates == null)
+                    throw new NullReferenceException();
+
+                return certificates;
+            } 
+            catch (Exception exception)
+            {
+                logger.LogInformation(exception, "Exception in GetCertificates method:" + exception.Message, null);
+                return Task.FromResult<List<CertificateView>>(null);
+            }
         }
     }
 }
