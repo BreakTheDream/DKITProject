@@ -1,0 +1,79 @@
+header {
+    width: 100%;
+    background-color: #019de3;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+}
+
+.wrap {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menu_button {
+    height: 24px;
+    width: 35px;
+    cursor: pointer;
+    position: relative;
+}
+
+.line { 
+    width: 35px;
+    background-color: #ffffff;
+    height: 4px;
+    transition: .2s ease;
+    position: absolute;
+}
+
+.line.top {
+    top: 0px;
+}
+
+.line.center {
+    width: 25px;
+    top: 10px;
+}
+
+.line.bottom {
+    width: 15px;
+    top: 20px;
+}
+
+.menu_button:hover .line.center,
+.menu_button:hover .line.bottom {
+    width: 35px;
+}
+
+.logo {
+    height: 35px;
+}
+
+.login_button span {
+    font-size: 22px;
+    font-weight: 100;
+    color: #ffffff;
+    font-family: 'Museo Sans 100';
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.line.top.active,
+.line.center.active,
+.line.bottom.active {
+    width: 35px;
+    top: 10px;
+}
+
+.line.top.active,
+.line.center.active {
+    transform: rotate(45deg);
+}
+
+.line.bottom.active {
+    transform: rotate(-45deg);
+}
+

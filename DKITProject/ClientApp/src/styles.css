@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: 'Museo Sans 100';
+  src: url('./assets/fonts/MuseoSansCyrl-100.eot');
+  src: url('./assets/fonts/MuseoSansCyrl-100.eot?#iefix') format('embedded-opentype'),
+    url('./assets/fonts/MuseoSansCyrl-100.woff') format('woff'),
+    url('./assets/fonts/MuseoSansCyrl-100.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
