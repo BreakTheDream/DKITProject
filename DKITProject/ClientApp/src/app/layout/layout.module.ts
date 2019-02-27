@@ -1,16 +1,21 @@
 import { NgModule } from "@angular/core";
 import { HeaderComponent } from './../layout/components/header/header.component';
 import { RouterModule } from '@angular/router';
+import { MenuComponent } from './components/menu/menu.component';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
     declarations: [
-        HeaderComponent
+        HeaderComponent,
+        MenuComponent
     ],
     imports: [
-        RouterModule
+        RouterModule,
+        BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     ],
     exports: [
-        HeaderComponent
+        HeaderComponent,
+        MenuComponent
     ]
 })
 

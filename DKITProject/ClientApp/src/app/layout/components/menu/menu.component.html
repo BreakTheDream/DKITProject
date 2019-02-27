@@ -1,0 +1,16 @@
+<div class="menu_wrap" [class.active]="menuActive">
+    <div class="menu_block">
+        <span (click)="test()">Главная</span>
+        <span>Новости</span>
+        <span>Абитуриентам</span>
+        <span>Родителям</span>
+        <span>Студенту</span>
+    </div>
+    <div class="menu_block" *ngIf="testMenuState">
+        <span>Главная</span>
+        <span>Новости</span>
+        <span>Абитуриентам</span>
+        <span>Родителям</span>
+        <span>Студенту</span>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+.menu_wrap {
+    position: fixed;
+    width: 100%;
+    background-color: #019de3;
+    top: 70px;
+    z-index: 1000;
+    left: -100%;
+    transition: .5s ease;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 15px 0;
+}
+
+.menu_wrap.active {
+    left: 0%;
+}
+
+.menu_block {
+    display: flex;
+    flex-direction: column;
+    transition: .5s ease;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu_block span {
+    color: #ffffff;
+    font-size: 24px;
+    margin: 5px 0;
+    font-family: 'Museo Sans 100';
+    cursor: pointer;
+}
