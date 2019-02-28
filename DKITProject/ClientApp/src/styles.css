@@ -17,3 +17,11 @@ body {
   right: 0;
   bottom: 0;
 }
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #019de3;
+}
