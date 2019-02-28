@@ -1,6 +1,10 @@
-@media (max-width: 767px) {
-  /* On small screens, the nav menu spans the full width of the screen. Leave a space for it. */
-  .body-content {
-    padding-top: 50px;
-  }
+:host {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.body_content {
+    flex: 1;
+    overflow: auto;
 }

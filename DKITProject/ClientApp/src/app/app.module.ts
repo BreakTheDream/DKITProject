@@ -2,13 +2,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 import { LayoutModule } from './layout/layout.module';
+import { WebSiteModule } from './web-site/web-site.module';
 
 import { AppComponent } from './app.component';
 
-const ROUTES = [];
+const ROUTES: Routes = [];
 
 @NgModule({
     declarations: [
@@ -19,7 +20,8 @@ const ROUTES = [];
         HttpClientModule,
         FormsModule,
         RouterModule.forRoot(ROUTES),
-        LayoutModule
+        LayoutModule,
+        WebSiteModule
     ],
     providers: [],
     bootstrap: [AppComponent]
