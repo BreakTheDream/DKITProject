@@ -59,6 +59,22 @@ header {
     font-family: 'Museo Sans 100';
     letter-spacing: 1px;
     cursor: pointer;
+    position: relative;
+}
+
+.login_button span::after {
+    content: '';
+    height: 1px;
+    background-color: #ffffff;
+    position: absolute;
+    width: 0;
+    transition: .4s ease;
+    left: 0;
+    bottom: -2px;
+}
+
+.login_button:hover span::after {
+    width: 100%;
 }
 
 .line.top.active,

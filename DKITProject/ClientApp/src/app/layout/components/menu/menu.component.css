@@ -2,7 +2,7 @@
     position: fixed;
     width: 100%;
     background-color: #019de3;
-    top: 70px;
+    top: 60px;
     z-index: 1000;
     left: -100%;
     transition: .5s ease;
