@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { StatesStore } from './../../../states-store/states.store';
 
 @Component({
   selector: 'app-menu',
@@ -7,18 +8,17 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  @Input()
-  menuActive: boolean;
-
   testMenuState: boolean = false;
 
+  constructor(
+    private states: StatesStore,
+  ) { }
+  
   test() {
     this.testMenuState = !this.testMenuState;
     console.log(this.testMenuState);
   }
-
-  constructor() { }
-
+  
   ngOnInit() {
   }
 

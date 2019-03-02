@@ -1,9 +1,9 @@
 <header>
     <div class="wrap">
         <div class="menu_button" (click)="menuClick()">
-            <div class="line top" [class.active]="menuActive"></div>
-            <div class="line center" [class.active]="menuActive"></div>
-            <div class="line bottom" [class.active]="menuActive"></div>
+            <div class="line top" [class.active]="states.isMenuOpened.state"></div>
+            <div class="line center" [class.active]="states.isMenuOpened.state"></div>
+            <div class="line bottom" [class.active]="states.isMenuOpened.state"></div>
         </div>
         <a [routerLink]="['/']">
             <img src="./../../../../assets/images/logo.png" alt="logo" class="logo">

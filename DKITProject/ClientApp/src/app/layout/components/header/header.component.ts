@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { StatesStore } from './../../../states-store/states.store';
+import { StatesDispatcter } from './../../../states-store/states.dispatcher';
 
 @Component({
   selector: 'app-header',
@@ -7,15 +9,14 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  @Input()
-  menuActive: boolean;
+  constructor(
+    private states: StatesStore,
+    private statesDispatcher: StatesDispatcter,
+  ) { }
 
-  @Output() menuClicked = new EventEmitter(); 
   menuClick() {
-    this.menuClicked.emit();
+    this.statesDispatcher.setIsMenuOpened(!this.states.isMenuOpened.state);
   }
-
-  constructor() { }
 
   ngOnInit() {
   }
