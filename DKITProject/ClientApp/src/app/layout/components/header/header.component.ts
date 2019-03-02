@@ -18,6 +18,10 @@ export class HeaderComponent implements OnInit {
     this.statesDispatcher.setIsMenuOpened(!this.states.isMenuOpened.state);
   }
 
+  OpenLoginForm() {
+    this.statesDispatcher.setIsLoginFormOpened(!this.states.isLoginFormOpened.state);
+  }
+
   ngOnInit() {
   }
 

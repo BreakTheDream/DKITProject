@@ -8,6 +8,7 @@ export class StatesDispatcter {
         private states: StatesStore
     ) {
         this.states.isMenuOpened.state = false;
+        this.states.isLoginFormOpened.state = false;
     }
 
     clear() {
@@ -16,5 +17,9 @@ export class StatesDispatcter {
 
     setIsMenuOpened(value: boolean) {
         this.states.isMenuOpened.state = value;
+    }
+
+    setIsLoginFormOpened(value: boolean) {
+        this.states.isLoginFormOpened.state = value;
     }
 }

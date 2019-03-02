@@ -1,0 +1,13 @@
+<div class="login_form_wrap" [class.active]="states.isLoginFormOpened.state">
+    <div class="login_form">
+        <div class="close_button" (click)="closeLoginForm()">
+            <div class="close_line left"></div>
+            <div class="close_line right"></div>
+        </div>
+        <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
+            <input type="text" placeholder="Логин" formControlName="Login">
+            <input type="password" placeholder="Пароль" formControlName="Password">
+            <input type="submit" value="Войти" [disabled]="loginForm.invalid">
+        </form>
+    </div>
+</div>
