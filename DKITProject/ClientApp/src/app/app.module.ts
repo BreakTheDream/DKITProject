@@ -8,9 +8,12 @@ import { LayoutModule } from './layout/layout.module';
 import { WebSiteModule } from './web-site/web-site.module';
 
 import { StatesStore } from './states-store/states.store';
-import { StatesDispatcter } from './states-store/states.dispatcher';
+import { StatesDispatcher } from './states-store/states.dispatcher';
 
 import { AppComponent } from './app.component';
+
+import { AuthService } from './services/auth.service';
+import { LocalStorageService } from './services/local-storage.service';
 
 const ROUTES: Routes = [];
 
@@ -28,7 +31,9 @@ const ROUTES: Routes = [];
     ],
     providers: [
         StatesStore,
-        StatesDispatcter
+        StatesDispatcher,
+        AuthService,
+        LocalStorageService
     ],
     bootstrap: [AppComponent]
 })

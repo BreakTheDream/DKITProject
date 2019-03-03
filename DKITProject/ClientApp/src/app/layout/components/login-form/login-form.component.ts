@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StatesStore } from './../../../states-store/states.store';
-import { StatesDispatcter } from './../../../states-store/states.dispatcher';
+import { StatesDispatcher } from './../../../states-store/states.dispatcher';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -14,7 +14,7 @@ export class LoginFormComponent implements OnInit {
 
   constructor(
       private states: StatesStore,
-      private statesDispatcher: StatesDispatcter
+      private statesDispatcher: StatesDispatcher
   ) { 
       this.loginForm = new FormGroup({
           'Login': new FormControl('', Validators.required),

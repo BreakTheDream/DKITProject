@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { StatesStore } from './../../../states-store/states.store';
-import { StatesDispatcter } from './../../../states-store/states.dispatcher';
+import { StatesDispatcher } from './../../../states-store/states.dispatcher';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +11,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private states: StatesStore,
-    private statesDispatcher: StatesDispatcter,
+    private statesDispatcher: StatesDispatcher,
   ) { }
 
   menuClick() {

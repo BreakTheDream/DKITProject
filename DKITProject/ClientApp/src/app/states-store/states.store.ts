@@ -6,9 +6,13 @@ import { StateProvider } from './state.provider';
 export class StatesStore {
     readonly isMenuOpened = new StateProvider<boolean>(null);
     readonly isLoginFormOpened = new StateProvider<boolean>(null);
+    readonly isLogin = new StateProvider<boolean>(null);
+    readonly isAdmin = new StateProvider<boolean>(null);
 
     public clear() {
         this.isMenuOpened.state = null;
         this.isLoginFormOpened.state = null;
+        this.isLogin.state = null;
+        this.isAdmin.state = null;
     }
 }
