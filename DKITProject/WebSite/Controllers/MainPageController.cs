@@ -57,7 +57,8 @@ namespace DKITProject.WebSite.Controllers
                         Content = n.Content,
                         Headline = n.Headline,
                         DatePost = n.DatePost,
-                        ImgPreview = n.ImgPreview
+                        ImgPreview = n.ImgPreview,
+                        Views = n.Views
                     })
                 .ToListAsync();
 

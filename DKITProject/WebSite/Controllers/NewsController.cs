@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using DKITProject.DAL;
 using DKITProject.ViewModel;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using System.IO;
-using System.Web;
+using DKITProject.DAL.Models;
 
 namespace DKITProject.WebSite.Controllers
-{   
+{
     public class NewsController : Controller
     {
         private ApplicationContext context;
@@ -24,9 +19,9 @@ namespace DKITProject.WebSite.Controllers
         }
 
         [HttpGet("api/newslist/{pageNumber}")]
-        public IActionResult GetNewsList(int pageNumber = 1) 
+        public async Task<IActionResult> GetNewsList(int pageNumber = 1)
         {
-            var news = context.News.Where(n => n.Approved)
+            var news = await context.News.Where(n => n.Approved)
                 .OrderByDescending(n => n.DatePost)
                 .Skip(pageCount * (pageNumber - 1))
                 .Take(pageCount)
@@ -36,34 +31,73 @@ namespace DKITProject.WebSite.Controllers
                     Content = n.Content,
                     Headline = n.Headline,
                     DatePost = n.DatePost,
-                    ImgPreview = n.ImgPreview
+                    ImgPreview = n.ImgPreview,
+                    Views = n.Views
                 })
-                .ToList();
+                .ToListAsync();
 
             return Ok(news);
         }
 
         [HttpGet("api/newbyid/{id}")]
-        public IActionResult GetNewById(int id)
+        public async Task<IActionResult> GetNewById(int? id)
         {
-            if(id == null)
+            if (id == null)
                 return BadRequest("Id is null");
 
-            var @new = context.News.FirstOrDefault(n => n.Id == id);
+            var @new = await context.News.FirstOrDefaultAsync(n => n.Id == id);
 
-            if(@new == null)
+            if (@new == null)
                 return BadRequest("New not found");
 
-            return Ok(new NewView 
+            return Ok(new NewView
             {
                 Id = @new.Id,
                 Headline = @new.Headline,
                 Content = @new.Content,
                 ImgPreview = @new.ImgPreview,
                 Images = @new.Images.Split(','),
-                DatePost = @new.DatePost
+                DatePost = @new.DatePost,
+                Views = @new.Views
             });
         }
 
+        [HttpPost("api/postnew")]
+        public async Task<IActionResult> PostNew([FromBody] New view)
+        {
+            if (ModelState.IsValid)
+            {
+                context.News.Add(view);
+                await context.SaveChangesAsync();
+                return Ok(view);
+            }
+            return BadRequest(ModelState);
+        }
+
+        [HttpPost("api/putnew")]
+        public async Task<IActionResult> PutNew([FromBody] New view)
+        {
+            if (ModelState.IsValid)
+            {
+                context.Update(view);
+                await context.SaveChangesAsync();
+            }
+            return BadRequest(ModelState);
+        }
+
+        [HttpDelete("api/deletenewbyid/{id}")]
+        public async Task<IActionResult> DeleteNew(int? id)
+        {
+            if (id is null) return BadRequest("Id is null");
+
+            var @new = await context.News.FirstOrDefaultAsync(e => e.Id == id);
+
+            if (@new is null) return BadRequest("New not found");
+
+            context.News.Remove(@new);
+            await context.SaveChangesAsync();
+
+            return Ok(@new);
+        }
     }
 }
