@@ -14,7 +14,8 @@ namespace DKITProject.DAL.Models
         public DateTime DatePost { get; set; }
         public DateTime DateStart { get; set; }
         public DateTime DateEnd { get; set; }
-        public int Count { get; set; }
+        public int PlacesCount { get; set; }
+        public int BusyPlacesCount { get; set; }
         public EventTypes EventType { get; set; }
         public Participant[] Participants { get; set; }
     }

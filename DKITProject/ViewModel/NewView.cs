@@ -11,6 +11,7 @@ namespace DKITProject.ViewModel
         public string ImgPreview { get; set; }
         public ICollection<string> Images { get; set; }
         public DateTime DatePost { get; set; }
+        public int Views { get; set; }
     }
 
     public class NewViewPreview 
@@ -20,5 +21,6 @@ namespace DKITProject.ViewModel
         public string Content { get; set; }
         public string ImgPreview { get; set; }
         public DateTime DatePost { get; set; }
+        public int Views { get; set; }
     }
 }

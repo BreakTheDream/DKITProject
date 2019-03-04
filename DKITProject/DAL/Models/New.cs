@@ -12,5 +12,6 @@ namespace DKITProject.DAL.Models
         public string Images { get; set; }
         public DateTime DatePost { get; set; }
         public bool Approved { get; set; }
+        public int Views { get; set; }
     }
 }
