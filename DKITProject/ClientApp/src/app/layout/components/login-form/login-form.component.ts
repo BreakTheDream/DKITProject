@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { StatesStore } from './../../../states-store/states.store';
 import { StatesDispatcher } from './../../../states-store/states.dispatcher';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AuthService } from './../../../services/auth.service';
 
 @Component({
   selector: 'app-login-form',
@@ -14,7 +15,8 @@ export class LoginFormComponent implements OnInit {
 
   constructor(
       private states: StatesStore,
-      private statesDispatcher: StatesDispatcher
+      private statesDispatcher: StatesDispatcher,
+      private authService: AuthService
   ) { 
       this.loginForm = new FormGroup({
           'Login': new FormControl('', Validators.required),
@@ -31,7 +33,18 @@ export class LoginFormComponent implements OnInit {
   }
 
   login() {
+      debugger
       console.log(this.loginForm.getRawValue());
+      this.authService.getToken(this.loginForm.getRawValue()).subscribe(data => {
+        console.log(data);
+        this.authService.checkAccess().subscribe(resp => {
+            console.log(resp);
+        }, error => {
+            console.log(error);
+        })
+      }, error => {
+          console.log(error);
+      });
   }
 
 }
