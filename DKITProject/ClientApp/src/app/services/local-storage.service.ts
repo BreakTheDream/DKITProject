@@ -6,11 +6,15 @@ export class LocalStorageService {
     setUser(data: any) {
         localStorage.setItem('access_token', data['access_token']);
         localStorage.setItem('user_name', data['user_name']);
-        localStorage.setItem('user_role', data['user_role']);
+        localStorage.setItem('role', data['role']);
     }
 
     getRole() {
-        return localStorage.getItem('user_role');
+        return localStorage.getItem('role');
+    }
+
+    getAccessToken() {
+        return localStorage.getItem('access_token');
     }
 
     userClear() {

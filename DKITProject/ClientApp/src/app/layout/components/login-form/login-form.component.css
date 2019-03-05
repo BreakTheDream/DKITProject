@@ -92,3 +92,10 @@
 .close_button:hover .close_line.right {
     transform: rotate(0deg);
 }
+
+.error {
+    font-size: 14px;
+    color: red;
+    text-align: center;
+    margin-top: 15px;
+}

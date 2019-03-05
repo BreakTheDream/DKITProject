@@ -15,35 +15,16 @@ export class AuthService {
     ){ }
     
     getToken(data: any) {
-        this.http.post(API_URLS.AUTH_URL, data).pipe(
+        return this.http.post(API_URLS.AUTH_URL, data).pipe(
             tap(response => {
                 this.localStorageService.setUser(response);
-            },
-            error => {
-                console.log(error);
             }),
 
         );
     }
 
     checkAccess() {
-        this.http.get(API_URLS.CHECK_ACCESS_URL).pipe(
-            tap(response => {
-                if(!response) {
-                    this.logOut();
-                    return;
-                }
-                this.statesDispatcher.setIsLogin(true);
-                let role = this.localStorageService.getRole();
-                if(role == 'admin') {
-                    this.statesDispatcher.setIsAdmin(true);
-                }
-            }, 
-            error => {
-                this.logOut();
-                console.log(error);
-            })
-        )
+        return this.http.get(API_URLS.CHECK_ACCESS_URL);
     }
 
     logOut() {

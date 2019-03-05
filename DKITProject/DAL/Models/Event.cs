@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using DKITProject.Enums;
 
 namespace DKITProject.DAL.Models
@@ -17,6 +18,6 @@ namespace DKITProject.DAL.Models
         public int PlacesCount { get; set; }
         public int BusyPlacesCount { get; set; }
         public EventTypes EventType { get; set; }
-        public Participant[] Participants { get; set; }
+        public List<Participant> Participants { get; set; }
     }
 }

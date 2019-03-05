@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 
 import { LayoutModule } from './layout/layout.module';
@@ -14,6 +14,8 @@ import { AppComponent } from './app.component';
 
 import { AuthService } from './services/auth.service';
 import { LocalStorageService } from './services/local-storage.service';
+
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 const ROUTES: Routes = [];
 
@@ -33,7 +35,12 @@ const ROUTES: Routes = [];
         StatesStore,
         StatesDispatcher,
         AuthService,
-        LocalStorageService
+        LocalStorageService,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: AuthInterceptor,
+            multi: true
+        }
     ],
     bootstrap: [AppComponent]
 })

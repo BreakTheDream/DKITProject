@@ -33,4 +33,8 @@ export class StatesDispatcher {
         this.states.isAdmin.state = value;
     }
 
+    setIsAuthFailed(value: boolean) {
+        this.states.isAuthFailed.state = value;
+    }
+
 }
