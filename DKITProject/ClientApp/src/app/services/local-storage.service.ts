@@ -17,6 +17,10 @@ export class LocalStorageService {
         return localStorage.getItem('access_token');
     }
 
+    getUserName() {
+        return localStorage.getItem('user_name');
+    }
+
     userClear() {
         localStorage.clear();
     }

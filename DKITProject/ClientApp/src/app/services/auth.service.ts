@@ -29,5 +29,7 @@ export class AuthService {
 
     logOut() {
         this.localStorageService.userClear();
+        this.statesDispatcher.setIsLogin(false);
+        this.statesDispatcher.setIsAdmin(false);
     }
 }
