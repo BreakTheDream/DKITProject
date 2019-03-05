@@ -78,7 +78,7 @@ namespace DKITProject.Administration.Controllers
 
         [Authorize]
         [HttpGet("api/checkaccess")]
-        public IActionResult GetAccess()
+        public IActionResult CheckAccess()
         {
             return Ok(true);
         }

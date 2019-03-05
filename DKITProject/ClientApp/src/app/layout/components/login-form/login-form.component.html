@@ -9,5 +9,6 @@
             <input type="password" placeholder="Пароль" formControlName="Password">
             <input type="submit" value="Войти" [disabled]="loginForm.invalid">
         </form>
+        <p class="error" *ngIf="states.isAuthFailed.state">{{errorMessage}}</p>
     </div>
 </div>

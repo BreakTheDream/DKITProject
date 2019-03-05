@@ -18,27 +18,13 @@ export class AuthService {
         return this.http.post(API_URLS.AUTH_URL, data).pipe(
             tap(response => {
                 this.localStorageService.setUser(response);
-                console.log(response);
             }),
 
         );
     }
 
     checkAccess() {
-        return this.http.get(API_URLS.CHECK_ACCESS_URL).pipe(
-            tap(response => {
-                if(!response) {
-                    this.logOut();
-                    return;
-                }
-                this.statesDispatcher.setIsLogin(true);
-                this.statesDispatcher.setIsLoginFormOpened(false);
-                let role = this.localStorageService.getRole();
-                if(role == 'admin') {
-                    this.statesDispatcher.setIsAdmin(true);
-                }
-            })
-        )
+        return this.http.get(API_URLS.CHECK_ACCESS_URL);
     }
 
     logOut() {
