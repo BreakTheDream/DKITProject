@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DKITProject.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20190305211655_Initial")]
+    [Migration("20190305225419_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -81,9 +81,9 @@ namespace DKITProject.Migrations
 
                     b.Property<string>("Announce");
 
-                    b.Property<string>("Content");
+                    b.Property<int>("BusyPlacesCount");
 
-                    b.Property<int>("Count");
+                    b.Property<string>("Content");
 
                     b.Property<DateTime>("DateEnd");
 
@@ -98,6 +98,8 @@ namespace DKITProject.Migrations
                     b.Property<string>("ImgIcon");
 
                     b.Property<string>("ImgPreview");
+
+                    b.Property<int>("PlacesCount");
 
                     b.HasKey("Id");
 
@@ -134,6 +136,8 @@ namespace DKITProject.Migrations
                     b.Property<string>("Images");
 
                     b.Property<string>("ImgPreview");
+
+                    b.Property<int>("Views");
 
                     b.HasKey("Id");
 

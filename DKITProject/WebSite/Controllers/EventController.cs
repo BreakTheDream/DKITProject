@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using DKITProject.DAL;
 using DKITProject.ViewModel;
 using Microsoft.EntityFrameworkCore;
 using DKITProject.Enums;
-using DKITProject.DAL.Models;
 
 namespace DKITProject.WebSite.Controllers
 {
@@ -71,44 +68,6 @@ namespace DKITProject.WebSite.Controllers
                 BusyPlacesCount = @event.BusyPlacesCount,
                 PlacesCount = @event.PlacesCount
             });
-        }
-
-        [HttpPost("api/postevent")]
-        public async Task<IActionResult> PostEvent([FromBody] Event view)
-        {
-            if (ModelState.IsValid)
-            {
-                context.Events.Add(view);
-                await context.SaveChangesAsync();
-                return Ok(view);
-            }
-            return BadRequest(ModelState);
-        }
-
-        [HttpPost("api/putevent")]
-        public async Task<IActionResult> PutEvent([FromBody] Event view)
-        {
-            if (ModelState.IsValid)
-            {
-                context.Update(view);
-                await context.SaveChangesAsync();
-            }
-            return BadRequest(ModelState);
-        }
-
-        [HttpDelete("api/deleteeventwbyid/{id}")]
-        public async Task<IActionResult> DeleteEvent(int? id)
-        {
-            if (id is null) return BadRequest("Id is null");
-
-            var @event = await context.Events.FirstOrDefaultAsync(e => e.Id == id);
-
-            if (@event is null) return BadRequest("New not found");
-
-            context.Events.Remove(@event);
-            await context.SaveChangesAsync();
-
-            return Ok(@event);
         }
     }
 }

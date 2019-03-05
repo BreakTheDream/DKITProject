@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using DKITProject.DAL;
 using DKITProject.ViewModel;
-using DKITProject.DAL.Models;
 
 namespace DKITProject.WebSite.Controllers
 {
@@ -60,44 +59,6 @@ namespace DKITProject.WebSite.Controllers
                 DatePost = @new.DatePost,
                 Views = @new.Views
             });
-        }
-
-        [HttpPost("api/postnew")]
-        public async Task<IActionResult> PostNew([FromBody] New view)
-        {
-            if (ModelState.IsValid)
-            {
-                context.News.Add(view);
-                await context.SaveChangesAsync();
-                return Ok(view);
-            }
-            return BadRequest(ModelState);
-        }
-
-        [HttpPost("api/putnew")]
-        public async Task<IActionResult> PutNew([FromBody] New view)
-        {
-            if (ModelState.IsValid)
-            {
-                context.Update(view);
-                await context.SaveChangesAsync();
-            }
-            return BadRequest(ModelState);
-        }
-
-        [HttpDelete("api/deletenewbyid/{id}")]
-        public async Task<IActionResult> DeleteNew(int? id)
-        {
-            if (id is null) return BadRequest("Id is null");
-
-            var @new = await context.News.FirstOrDefaultAsync(e => e.Id == id);
-
-            if (@new is null) return BadRequest("New not found");
-
-            context.News.Remove(@new);
-            await context.SaveChangesAsync();
-
-            return Ok(@new);
         }
     }
 }

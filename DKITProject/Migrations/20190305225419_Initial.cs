@@ -52,7 +52,8 @@ namespace DKITProject.Migrations
                     DatePost = table.Column<DateTime>(nullable: false),
                     DateStart = table.Column<DateTime>(nullable: false),
                     DateEnd = table.Column<DateTime>(nullable: false),
-                    Count = table.Column<int>(nullable: false),
+                    PlacesCount = table.Column<int>(nullable: false),
+                    BusyPlacesCount = table.Column<int>(nullable: false),
                     EventType = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -84,7 +85,8 @@ namespace DKITProject.Migrations
                     ImgPreview = table.Column<string>(nullable: true),
                     Images = table.Column<string>(nullable: true),
                     DatePost = table.Column<DateTime>(nullable: false),
-                    Approved = table.Column<bool>(nullable: false)
+                    Approved = table.Column<bool>(nullable: false),
+                    Views = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
