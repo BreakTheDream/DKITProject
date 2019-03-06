@@ -11,6 +11,7 @@ export class StatesDispatcher {
         this.states.isLoginFormOpened.state = false;
         this.states.isLogin.state = false;
         this.states.isAdmin.state = false;
+        this.states.isUserName.state = '';
     }
 
     clear() {
@@ -35,6 +36,10 @@ export class StatesDispatcher {
 
     setIsAuthFailed(value: boolean) {
         this.states.isAuthFailed.state = value;
+    }
+
+    setUserName(value: string) {
+        this.states.isUserName.state = value;
     }
 
 }

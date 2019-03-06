@@ -3,7 +3,6 @@ import { StatesStore } from './../../../states-store/states.store';
 import { StatesDispatcher } from './../../../states-store/states.dispatcher';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from './../../../services/auth.service';
-import { map } from 'rxjs/operators';
 import { LocalStorageService } from './../../../services/local-storage.service';
 
 @Component({
@@ -45,12 +44,8 @@ export class LoginFormComponent implements OnInit {
                 this.statesDispatcher.setIsAuthFailed(true);
                 return;
             }
-            this.statesDispatcher.setIsLogin(true);
             this.statesDispatcher.setIsLoginFormOpened(false);
-            let role = this.localStorageService.getRole();
-            if(role == 'admin') {
-                this.statesDispatcher.setIsAdmin(true);
-            }
+            this.authService.getUser();
         }, error => {
             console.log(error);
             this.errorMessage = error.error;

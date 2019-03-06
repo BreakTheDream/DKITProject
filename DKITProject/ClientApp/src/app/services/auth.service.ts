@@ -32,4 +32,13 @@ export class AuthService {
         this.statesDispatcher.setIsLogin(false);
         this.statesDispatcher.setIsAdmin(false);
     }
+
+    getUser() {
+        this.statesDispatcher.setIsLogin(true);
+        let role = this.localStorageService.getRole();
+        if(role == 'admin') {
+            this.statesDispatcher.setIsAdmin(true);
+        }
+        this.statesDispatcher.setUserName(this.localStorageService.getUserName());
+    }
 }

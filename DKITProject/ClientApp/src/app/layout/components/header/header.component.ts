@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { StatesStore } from './../../../states-store/states.store';
 import { StatesDispatcher } from './../../../states-store/states.dispatcher';
+import { LocalStorageService } from './../../../services/local-storage.service';
+import { AuthService } from './../../../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -12,6 +14,8 @@ export class HeaderComponent implements OnInit {
   constructor(
     private states: StatesStore,
     private statesDispatcher: StatesDispatcher,
+    private localStorageService: LocalStorageService,
+    private authService: AuthService
   ) { }
 
   menuClick() {
@@ -23,6 +27,15 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.checkAccess();
+  }
+
+  checkAccess() {
+    this.authService.checkAccess().subscribe(data => {
+      this.authService.getUser();
+    }, error => {
+      console.log(error);
+    })
   }
 
 }
