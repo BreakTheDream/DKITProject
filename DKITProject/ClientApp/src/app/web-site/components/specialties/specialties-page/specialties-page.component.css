@@ -1,0 +1,12 @@
+.page_wrap {
+    width: 90%;
+    margin: 0 auto;
+}
+
+h2 {
+    font-size: 36px;
+    color: #019de3;
+    text-align: center;
+    font-weight: 700;
+    margin: 50px 0;
+}

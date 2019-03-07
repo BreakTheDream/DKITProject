@@ -1,0 +1,9 @@
+:host {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.speciality {
+    width: 25%;
+}
