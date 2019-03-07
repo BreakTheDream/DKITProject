@@ -5,8 +5,12 @@
             <div class="close_line right"></div>
         </div>
         <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
-            <input type="text" placeholder="Логин" formControlName="Login">
-            <input type="password" placeholder="Пароль" formControlName="Password">
+            <mat-form-field>
+                <input matInput type="text" placeholder="Логин" formControlName="Login">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput type="password" placeholder="Пароль" formControlName="Password">
+            </mat-form-field>
             <input type="submit" value="Войти" [disabled]="loginForm.invalid">
         </form>
         <p class="error" *ngIf="states.isAuthFailed.state">{{errorMessage}}</p>
