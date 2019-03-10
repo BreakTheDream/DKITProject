@@ -3,21 +3,21 @@ import { RouterModule, Routes } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { MainPageComponent } from './components/main-page/main-page.component';
-import { SpecialtyBlockComponent } from './components/specialties/specialty-block/specialty-block.component';
-import { SpecialtiesListComponent } from './components/specialties/specialties-list/specialties-list.component';
-import { SpecialtiesPageComponent } from './components/specialties/specialties-page/specialties-page.component';
+import { SpecialityBlockComponent } from './components/specialties/speciality-block/speciality-block.component';
+import { SpecialitiesPageComponent } from './components/specialties/specialities-page/specialities-page.component';
+import { SpecialitiesListComponent } from './components/specialties/specialities-list/specialities-list.component';
 
 const ROUTES: Routes = [
     { path: '', component: MainPageComponent },
-    { path: 'specialties', component: SpecialtiesPageComponent }
+    { path: 'specialties', component: SpecialitiesPageComponent }
 ];
 
 @NgModule({
     declarations: [
         MainPageComponent,
-        SpecialtyBlockComponent,
-        SpecialtiesListComponent,
-        SpecialtiesPageComponent
+        SpecialityBlockComponent,
+        SpecialitiesListComponent,
+        SpecialitiesPageComponent
     ],
     imports: [
         RouterModule.forChild(ROUTES),
@@ -25,9 +25,9 @@ const ROUTES: Routes = [
     ],
     exports: [
         MainPageComponent,
-        SpecialtyBlockComponent,
-        SpecialtiesListComponent,
-        SpecialtiesPageComponent
+        SpecialityBlockComponent,
+        SpecialitiesListComponent,
+        SpecialitiesPageComponent
     ]
 })
 
