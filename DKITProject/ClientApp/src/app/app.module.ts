@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { LayoutModule } from './layout/layout.module';
 import { WebSiteModule } from './web-site/web-site.module';
+import { AdministrationModule } from './administration/administration.module';
 
 import { StatesStore } from './states-store/states.store';
 import { StatesDispatcher } from './states-store/states.dispatcher';
@@ -17,11 +18,15 @@ import { LocalStorageService } from './services/local-storage.service';
 
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 
-const ROUTES: Routes = [];
+// import { AdministrationPanelComponent } from './administration/administration-panel/administration-panel.component';
+
+const ROUTES: Routes = [
+    // { path: 'administration', component: AdministrationPanelComponent }
+];
 
 @NgModule({
     declarations: [
-        AppComponent,
+        AppComponent
     ],
     imports: [
         BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -29,7 +34,8 @@ const ROUTES: Routes = [];
         FormsModule,
         RouterModule.forRoot(ROUTES),
         LayoutModule,
-        WebSiteModule
+        WebSiteModule,
+        AdministrationModule
     ],
     providers: [
         StatesStore,
