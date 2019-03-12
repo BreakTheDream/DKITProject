@@ -12,6 +12,8 @@ export class StatesDispatcher {
         this.states.isLogin.state = false;
         this.states.isAdmin.state = false;
         this.states.isUserName.state = '';
+        this.states.isUserMenuOpened.state = false;
+        this.states.isSpecialityMenuItemOpened.state = false;
     }
 
     clear() {
@@ -44,6 +46,10 @@ export class StatesDispatcher {
 
     setIsUserMenuOpened(value: boolean) {
         this.states.isUserMenuOpened.state = value;
+    }
+
+    setIsSpecialityMenuItemOpened(value: boolean) {
+        this.states.isSpecialityMenuItemOpened.state = value;
     }
 
 }

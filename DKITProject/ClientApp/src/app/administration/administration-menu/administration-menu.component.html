@@ -1,3 +1,9 @@
-<p>
-  administration-menu works!
-</p>
+<div class="sidebar">
+    <div class="menu_item_block">
+        <span class="header_item" (click)="menuItemOpen('speciality')">Специальности</span>
+        <div class="menu_items" [class.active]="states.isSpecialityMenuItemOpened.state">
+            <span class="menu_item">Добавить</span>
+            <span class="menu_item">Удалить/Редактировать</span>
+        </div>
+    </div>
+</div>

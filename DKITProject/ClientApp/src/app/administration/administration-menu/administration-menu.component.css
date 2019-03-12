@@ -1,0 +1,38 @@
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    color: #ffffff;
+    background-color: #019de3;
+    padding: 0 25px 25px 25px;
+}
+
+.menu_item_block {
+    display: flex;
+    flex-direction: column;
+}
+
+.header_item {
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 20px;
+    margin-top: 25px;
+}
+
+.menu_items {
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    margin-left: 25px;
+    transition: .3s ease;
+    overflow: hidden;
+    max-height: 0px;
+}
+
+.menu_items.active {
+    max-height: 100px;
+}
+
+.menu_item {
+    margin-top: 10px;
+    cursor: pointer;
+}
