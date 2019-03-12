@@ -1,5 +1,6 @@
 <app-header></app-header>
 <app-menu></app-menu>
+<app-user-menu *ngIf="states.isLogin.state"></app-user-menu>
 <app-login-form></app-login-form>
 <div class="body_content">
     <router-outlet></router-outlet>

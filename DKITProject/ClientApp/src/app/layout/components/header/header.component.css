@@ -52,7 +52,8 @@ header {
     height: 35px;
 }
 
-.login_button span {
+.login_button span,
+.user_button span {
     font-size: 18px;
     font-weight: 100;
     color: #ffffff;
@@ -60,7 +61,8 @@ header {
     position: relative;
 }
 
-.login_button span::after {
+.login_button span::after,
+.user_button span::after {
     content: '';
     height: 1px;
     background-color: #ffffff;
@@ -71,7 +73,8 @@ header {
     bottom: -2px;
 }
 
-.login_button:hover span::after {
+.login_button:hover span::after,
+.user_button:hover span::after {
     width: 100%;
 }
 

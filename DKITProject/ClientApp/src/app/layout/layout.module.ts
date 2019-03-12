@@ -8,13 +8,14 @@ import { MatInputModule } from '@angular/material';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { HeaderComponent } from './../layout/components/header/header.component';
-import { from } from 'rxjs';
+import { UserMenuComponent } from './components/user-menu/user-menu.component';
 
 @NgModule({
     declarations: [
         HeaderComponent,
         MenuComponent,
-        LoginFormComponent
+        LoginFormComponent,
+        UserMenuComponent
     ],
     imports: [
         RouterModule,
@@ -26,7 +27,8 @@ import { from } from 'rxjs';
     exports: [
         HeaderComponent,
         MenuComponent,
-        LoginFormComponent
+        LoginFormComponent, 
+        UserMenuComponent
     ]
 })
 

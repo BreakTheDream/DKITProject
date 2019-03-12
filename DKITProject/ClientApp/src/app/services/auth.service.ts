@@ -31,6 +31,7 @@ export class AuthService {
         this.localStorageService.userClear();
         this.statesDispatcher.setIsLogin(false);
         this.statesDispatcher.setIsAdmin(false);
+        this.statesDispatcher.setIsUserMenuOpened(false);
     }
 
     getUser() {

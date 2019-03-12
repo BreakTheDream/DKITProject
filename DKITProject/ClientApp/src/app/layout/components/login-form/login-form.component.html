@@ -11,7 +11,7 @@
             <mat-form-field>
                 <input matInput type="password" placeholder="Пароль" formControlName="Password">
             </mat-form-field>
-            <input type="submit" value="Войти" [disabled]="loginForm.invalid">
+            <input type="submit" value="Войти" [disabled]="loginForm.invalid || isSubmitDisabled">
         </form>
         <p class="error" *ngIf="states.isAuthFailed.state">{{errorMessage}}</p>
     </div>

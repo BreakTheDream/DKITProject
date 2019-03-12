@@ -42,4 +42,8 @@ export class StatesDispatcher {
         this.states.isUserName.state = value;
     }
 
+    setIsUserMenuOpened(value: boolean) {
+        this.states.isUserMenuOpened.state = value;
+    }
+
 }

@@ -10,6 +10,7 @@ export class StatesStore {
     readonly isAdmin = new StateProvider<boolean>(null);
     readonly isAuthFailed = new StateProvider<boolean>(null);
     readonly isUserName = new StateProvider<string>(null);
+    readonly isUserMenuOpened = new StateProvider<boolean>(null);
 
     public clear() {
         this.isMenuOpened.state = null;
@@ -17,5 +18,6 @@ export class StatesStore {
         this.isLogin.state = null;
         this.isAdmin.state = null;
         this.isAuthFailed.state = null;
+        this.isUserMenuOpened.state = null;
     }
 }

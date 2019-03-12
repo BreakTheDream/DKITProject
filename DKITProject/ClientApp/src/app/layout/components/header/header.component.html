@@ -8,10 +8,10 @@
         <a [routerLink]="['/']">
             <img src="./../../../../assets/images/logo.png" alt="logo" class="logo">
         </a>
-        <div class="login_button" (click)="OpenLoginForm()" *ngIf="!states.isLogin.state">
+        <div class="login_button" (click)="openLoginForm()" *ngIf="!states.isLogin.state">
             <span>Войти</span>    
         </div>
-        <div class="login_button" *ngIf="states.isLogin.state">
+        <div class="user_button" (click)="openUserMenu()" *ngIf="states.isLogin.state">
             <span>{{states.isUserName.state}}</span>    
         </div>
     </div>
