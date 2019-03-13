@@ -1,0 +1,18 @@
+<div class="card_wrap">
+    <h2>Добавить специальность</h2>
+    <form [formGroup]="specialityForm" (ngSubmit)="addSpeciality()" novalidate>
+        <mat-form-field>
+            <input matInput type="text" placeholder="Название" formControlName="Name">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="text" placeholder="Анонс" formControlName="Announce">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="text" placeholder="Описание" formControlName="Content">
+        </mat-form-field>
+        <input type="file">
+        <input type="file">
+        <input type="submit" value="Добавить">
+        <input type="button" value="Очистить">
+    </form>
+</div>

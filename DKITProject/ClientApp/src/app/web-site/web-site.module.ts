@@ -3,9 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { MainPageComponent } from './components/main-page/main-page.component';
-import { SpecialityBlockComponent } from './components/specialties/speciality-block/speciality-block.component';
-import { SpecialitiesPageComponent } from './components/specialties/specialities-page/specialities-page.component';
-import { SpecialitiesListComponent } from './components/specialties/specialities-list/specialities-list.component';
+import { SpecialityBlockComponent } from './components/specialities/speciality-block/speciality-block.component';
+import { SpecialitiesPageComponent } from './components/specialities/specialities-page/specialities-page.component';
+import { SpecialitiesListComponent } from './components/specialities/specialities-list/specialities-list.component';
 
 const ROUTES: Routes = [
     { path: '', component: MainPageComponent },

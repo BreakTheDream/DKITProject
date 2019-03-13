@@ -6,14 +6,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material';
 
-import { AdministrationMenuComponent } from './administration-menu/administration-menu.component';
-import { AdministrationPanelComponent } from './administration-panel/administration-panel.component';
-import { AdministrationTestComponent } from './administration-test/administration-test.component';
+import { AdministrationMenuComponent } from './components/administration-menu/administration-menu.component';
+import { AdministrationPanelComponent } from './components/administration-panel/administration-panel.component';
+import { AdministrationSpecialityCardComponent } from './components/specialities/administration-speciality-card/administration-speciality-card.component';
 
 const ROUTES: Routes = [
-    // { path: 'administration/test', component: AdministrationTestComponent }
     { path: 'administration', component: AdministrationPanelComponent, children: [
-        { path: 'test', component: AdministrationTestComponent  }
+        { path: 'specialities/card', component: AdministrationSpecialityCardComponent }
     ] }
 ];
 
@@ -21,7 +20,7 @@ const ROUTES: Routes = [
     declarations: [
         AdministrationMenuComponent,
         AdministrationPanelComponent,
-        AdministrationTestComponent
+        AdministrationSpecialityCardComponent,
     ],
     imports: [
     RouterModule.forChild(ROUTES),
@@ -33,7 +32,7 @@ const ROUTES: Routes = [
     exports: [
         AdministrationMenuComponent,
         AdministrationPanelComponent,
-        AdministrationTestComponent
+        AdministrationSpecialityCardComponent,
     ]
 })
 

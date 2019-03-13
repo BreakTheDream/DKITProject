@@ -51,7 +51,7 @@ namespace DKITProject.WebSite.Controllers
                 Name = specialty.Name,
                 Announce = specialty.Announce,
                 Content = specialty.Content,
-                ImgPreviev = specialty.ImgPreviev,
+                ImgPreviev = specialty.ImgPreview,
                 
             });
         }
