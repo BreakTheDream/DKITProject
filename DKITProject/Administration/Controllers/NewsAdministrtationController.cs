@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using DKITProject.DAL;
 using DKITProject.DAL.Models;
 using Microsoft.AspNetCore.Authorization;
+using DKITProject.ViewModel;
 
 namespace DKITProject.Administration.Controllers
 {
@@ -18,11 +19,19 @@ namespace DKITProject.Administration.Controllers
 
         [Authorize]
         [HttpPost("api/postnew")]
-        public async Task<IActionResult> PostNew([FromBody] New view)
+        public async Task<IActionResult> PostNew([FromBody] AdministrationNewViewModel view)
         {
             if (ModelState.IsValid)
             {
-                context.News.Add(view);
+                context.News.Add(new New
+                {
+                    Content = view.Content,
+                    Approved = view.Approved,
+                    DatePost = view.DatePost,
+                    Headline = view.Headline,
+                    Images = view.Images,
+                    ImgPreview = view.ImgPreview
+                });
                 await context.SaveChangesAsync();
                 return Ok(view);
             }
@@ -31,11 +40,20 @@ namespace DKITProject.Administration.Controllers
 
         [Authorize]
         [HttpPut("api/putnew")]
-        public async Task<IActionResult> PutNew([FromBody] New view)
+        public async Task<IActionResult> PutNew([FromBody] AdministrationNewViewModel view)
         {
             if (ModelState.IsValid)
             {
-                context.Update(view);
+                New @new = await context.News.FirstOrDefaultAsync(e => e.Id == view.Id);
+
+                @new.Content = view.Content;
+                @new.Approved = view.Approved;
+                @new.DatePost = view.DatePost;
+                @new.Headline = view.Headline;
+                @new.Images = view.Images;
+                @new.ImgPreview = view.ImgPreview;
+
+                context.News.Update(@new);
                 await context.SaveChangesAsync();
             }
             return BadRequest(ModelState);

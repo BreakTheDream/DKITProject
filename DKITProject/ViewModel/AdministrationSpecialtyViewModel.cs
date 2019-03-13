@@ -1,6 +1,11 @@
-namespace DKITProject.DAL.Models
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace DKITProject.ViewModel
 {
-    public class Specialty
+    public class AdministrationSpecialtyViewModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -8,6 +13,5 @@ namespace DKITProject.DAL.Models
         public string Content { get; set; }
         public string ImgIcon { get; set; }
         public string ImgPreview { get; set; }
-        public ControlNumber ControlNumber { get; set; }
     }
 }
