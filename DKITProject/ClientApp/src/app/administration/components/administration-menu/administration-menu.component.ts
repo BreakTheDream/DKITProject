@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { StatesDispatcher } from './../../states-store/states.dispatcher';
-import { StatesStore } from './../../states-store/states.store';
+import { StatesDispatcher } from './../../../states-store/states.dispatcher';
+import { StatesStore } from './../../../states-store/states.store';
 
 @Component({
   selector: 'app-administration-menu',
@@ -22,7 +22,7 @@ export class AdministrationMenuComponent implements OnInit {
   }
 
   menuItemOpen(state: string) {
-    this.menuStates[`${state}`]();
+    this.menuStates[state]();
   }
 
 }
