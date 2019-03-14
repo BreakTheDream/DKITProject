@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using DKITProject.DAL;
 using Microsoft.AspNetCore.Authorization;
-using DKITProject.ViewModel;
 using DKITProject.DAL.Models;
+using DKITProject.ViewModel;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+
 
 namespace DKITProject.Administration.Controllers
 {
@@ -21,54 +20,103 @@ namespace DKITProject.Administration.Controllers
         }
 
         [Authorize]
-        [HttpPost("api/postspecialty")]
+        [HttpGet("api/administration/getspecialitybyid/{id}")]
+        public async Task<IActionResult> GetSpecialityById(int? id)
+        {
+            if (id == null)
+                return BadRequest("Id is null");
+
+            var specialities = context.Specialties.Include(s => s.ControlNumber);
+
+            Specialty specialty = await specialities
+                .FirstOrDefaultAsync(e => e.Id == id);
+
+            if (specialty is null)
+                return BadRequest("New not found");
+
+            return Ok(new AdministrationSpecialtyViewModel
+            {
+                Id = specialty.Id,
+                Announce = specialty.Announce,
+                Content = specialty.Content,
+                ImgIcon = specialty.ImgIcon,
+                Name = specialty.Name,
+                ControlNumberId = specialty.ControlNumberId,
+                ControlNumber = specialty.ControlNumber.Count
+            });
+        }
+
+        [Authorize]
+        [HttpPost("api/postspeciality")]
         public async Task<IActionResult> PostSpecialty([FromBody] AdministrationSpecialtyViewModel view)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            Specialty specialty = new Specialty
             {
-                context.Specialties.Add(new Specialty
-                {
-                    Announce = view.Announce,
-                    Content = view.Content,
-                    ImgIcon = view.ImgIcon,
-                    ImgPreview = view.ImgPreview,
-                    Name = view.Name
-                });
-                await context.SaveChangesAsync();
-                return Ok(view);
-            }
-            return BadRequest(ModelState);
+                Announce = view.Announce,
+                Content = view.Announce,
+                ImgIcon = view.ImgIcon,
+                Name = view.Name
+            };
+
+            var newSpeciality = context.Specialties.Add(specialty);
+
+            ControlNumber controlNumber = new ControlNumber
+            {
+                Count = view.ControlNumber,
+                SpecialtyId = newSpeciality.Entity.Id
+            };
+
+            context.ControlNumbers.Add(controlNumber);
+            await context.SaveChangesAsync();
+
+            return Ok(view);
         }
 
         [Authorize]
-        [HttpPut("api/putspecialty")]
+        [HttpPut("api/administration/putspeciality")]
         public async Task<IActionResult> PutSpecialty([FromBody] AdministrationSpecialtyViewModel view)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            Specialty specialty = new Specialty
             {
-                Specialty specialty = await context.Specialties.FirstOrDefaultAsync(e => e.Id == view.Id);
+                Id = view.Id,
+                Announce = view.Announce,
+                Content = view.Content,
+                ImgIcon = view.ImgIcon,
+                Name = view.Name,
+                ControlNumberId = view.ControlNumberId
+            };
 
-                specialty.ImgIcon = view.ImgIcon;
-                specialty.ImgPreview = view.ImgPreview;
-                specialty.Name = view.Name;
-                specialty.Content = view.Content;
-                specialty.Announce = view.Announce;
+            ControlNumber controlNumber = new ControlNumber
+            {
+                Id = view.ControlNumberId,
+                Count = view.ControlNumber,
+                SpecialtyId = view.Id
+            };
 
-                context.Specialties.Update(specialty);
-                await context.SaveChangesAsync();
-            }
-            return BadRequest(ModelState);
+            context.Specialties.Update(specialty);
+            context.ControlNumbers.Update(controlNumber);
+
+            await context.SaveChangesAsync();
+            return Ok(view);
         }
 
         [Authorize]
-        [HttpDelete("api/deletespecialtybyid/{id}")]
+        [HttpDelete("api/administration/deletespecialitybyid/{id}")]
         public async Task<IActionResult> DeleteSpecialty(int? id)
         {
-            if (id is null) return BadRequest("Id is null");
+            if (id is null)
+                return BadRequest("Id is null");
 
             Specialty specialty = await context.Specialties.FirstOrDefaultAsync(e => e.Id == id);
 
-            if (specialty is null) return BadRequest("New not found");
+            if (specialty is null)
+                return BadRequest("New not found");
 
             context.Specialties.Remove(specialty);
             await context.SaveChangesAsync();
