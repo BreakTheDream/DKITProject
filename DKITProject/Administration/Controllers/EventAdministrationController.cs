@@ -4,6 +4,7 @@ using DKITProject.DAL;
 using Microsoft.EntityFrameworkCore;
 using DKITProject.DAL.Models;
 using Microsoft.AspNetCore.Authorization;
+using DKITProject.ViewModel;
 
 namespace DKITProject.Administration.Controllers
 {
@@ -18,11 +19,22 @@ namespace DKITProject.Administration.Controllers
 
         [Authorize]
         [HttpPost("api/postevent")]
-        public async Task<IActionResult> PostEvent([FromBody] Event view)
+        public async Task<IActionResult> PostEvent([FromBody] AdministrationEventViewModel view)
         {
             if (ModelState.IsValid)
             {
-                context.Events.Add(view);
+                context.Events.Add(new Event
+                {
+                    ImgIcon = view.ImgIcon,
+                    ImgPreview = view.ImgPreview,
+                    Headline = view.Headline,
+                    Content = view.Content,
+                    Announce = view.Announce,
+                    DateEnd = view.DateEnd,
+                    DatePost = view.DatePost,
+                    DateStart = view.DateStart,
+                    EventType = view.EventType
+                });
                 await context.SaveChangesAsync();
                 return Ok(view);
             }
@@ -31,11 +43,23 @@ namespace DKITProject.Administration.Controllers
 
         [Authorize]
         [HttpPut("api/putevent")]
-        public async Task<IActionResult> PutEvent([FromBody] Event view)
+        public async Task<IActionResult> PutEvent([FromBody] AdministrationEventViewModel view)
         {
             if (ModelState.IsValid)
             {
-                context.Update(view);
+                Event @event = await context.Events.FirstOrDefaultAsync(e => e.Id == view.Id);
+
+                @event.ImgIcon = view.ImgIcon;
+                @event.ImgPreview = view.ImgPreview;
+                @event.Headline = view.Headline;
+                @event.Content = view.Content;
+                @event.Announce = view.Announce;
+                @event.DateEnd = view.DateEnd;
+                @event.DatePost = view.DatePost;
+                @event.DateStart = view.DateStart;
+                @event.EventType = view.EventType;
+
+                context.Events.Update(@event);
                 await context.SaveChangesAsync();
             }
             return BadRequest(ModelState);
