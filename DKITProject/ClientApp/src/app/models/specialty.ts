@@ -2,9 +2,8 @@ export class SpecialtyModel {
     constructor(
         public id: number,
         public name: string,
-        public announce: string, 
         public content: string,
-        public imgPreviev: string
+        public imgIcon: string
     ){}
 }
 
@@ -24,6 +23,7 @@ export class AdministrationSpecialityModel {
         public announce: string,
         public content: string,
         public imgIcon: string,
-        public imgPreview: string
+        public controlNumberId: number,
+        public controlNumber: number,
     ){}
 }
