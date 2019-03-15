@@ -41,13 +41,13 @@ namespace DKITProject.Administration.Controllers
                 Content = specialty.Content,
                 ImgIcon = specialty.ImgIcon,
                 Name = specialty.Name,
-                ControlNumberId = specialty.ControlNumberId,
+                ControlNumberId = specialty.ControlNumber.Id,
                 ControlNumber = specialty.ControlNumber.Count
             });
         }
 
         [Authorize]
-        [HttpPost("api/postspeciality")]
+        [HttpPost("api/administration/postspeciality")]
         public async Task<IActionResult> PostSpecialty([FromBody] AdministrationSpecialtyViewModel view)
         {
             if (!ModelState.IsValid)
@@ -88,8 +88,7 @@ namespace DKITProject.Administration.Controllers
                 Announce = view.Announce,
                 Content = view.Content,
                 ImgIcon = view.ImgIcon,
-                Name = view.Name,
-                ControlNumberId = view.ControlNumberId
+                Name = view.Name
             };
 
             ControlNumber controlNumber = new ControlNumber
