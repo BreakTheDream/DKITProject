@@ -16,7 +16,6 @@ export class AdministrationSpecialityCardComponent implements OnInit {
             'Announce': new FormControl('', Validators.required),
             'Content': new FormControl('', Validators.required),
             'ImgIcon': new FormControl(''),
-            'ImgPreview': new FormControl('')
         })
     }
 

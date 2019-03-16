@@ -35,7 +35,7 @@ namespace DKITProject.WebSite.Controllers
         }
 
         [HttpGet("api/getspecialitybyid/{id}")]
-        public IActionResult GetSpecialityByid(int id) 
+        public IActionResult GetSpecialityByid(int? id) 
         {
             if(id == null)
                 return BadRequest("Id is null");
@@ -49,7 +49,6 @@ namespace DKITProject.WebSite.Controllers
             {
                 Id = specialty.Id,
                 Name = specialty.Name,
-                Announce = specialty.Announce,
                 Content = specialty.Content,
                 ImgIcon = specialty.ImgIcon,
                 

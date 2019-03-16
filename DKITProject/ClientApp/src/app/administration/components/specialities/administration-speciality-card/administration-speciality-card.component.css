@@ -1,0 +1,46 @@
+:host {
+    flex: 1;
+}
+
+.card_wrap h2 {
+    font-size: 30px;
+    font-weight: 700;
+    text-align: center;
+    color: #019de3;
+    margin-top: 50px;
+}
+
+.card_wrap form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 50px;
+}
+
+.mat-form-field {
+    width: 48%;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+.long {
+    width: 100%;
+}
+
+label {
+    display:  flex;
+    flex-direction: row;
+    margin-top: 50px;
+}
+
+label input {
+    width: 150px;
+    height: 50px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    transition: .3s ease;
+    margin-right: 25px;
+}
+
