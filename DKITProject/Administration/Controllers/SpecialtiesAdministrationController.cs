@@ -72,7 +72,7 @@ namespace DKITProject.Administration.Controllers
             context.ControlNumbers.Add(controlNumber);
             await context.SaveChangesAsync();
 
-            return Ok(view);
+            return Ok(true);
         }
 
         [Authorize]
@@ -102,7 +102,7 @@ namespace DKITProject.Administration.Controllers
             context.ControlNumbers.Update(controlNumber);
 
             await context.SaveChangesAsync();
-            return Ok(view);
+            return Ok(true);
         }
 
         [Authorize]
@@ -120,7 +120,7 @@ namespace DKITProject.Administration.Controllers
             context.Specialties.Remove(specialty);
             await context.SaveChangesAsync();
 
-            return Ok(specialty);
+            return Ok(true);
         }
     }
 }

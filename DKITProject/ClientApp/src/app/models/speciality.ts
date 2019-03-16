@@ -1,4 +1,4 @@
-export class SpecialtyModel {
+export class SpecialityModel {
     constructor(
         public id: number,
         public name: string,
@@ -7,7 +7,7 @@ export class SpecialtyModel {
     ){}
 }
 
-export class SpecialtyPreviewModel {
+export class SpecialityPreviewModel {
     constructor(
         public id: number,
         public name: string,

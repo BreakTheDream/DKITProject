@@ -15,13 +15,13 @@ import { AppComponent } from './app.component';
 
 import { AuthService } from './services/auth.service';
 import { LocalStorageService } from './services/local-storage.service';
+import { SpecialityService } from './services/speciality.service';
 
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 
-// import { AdministrationPanelComponent } from './administration/administration-panel/administration-panel.component';
 
 const ROUTES: Routes = [
-    // { path: 'administration', component: AdministrationPanelComponent }
+    
 ];
 
 @NgModule({
@@ -42,6 +42,7 @@ const ROUTES: Routes = [
         StatesDispatcher,
         AuthService,
         LocalStorageService,
+        SpecialityService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: AuthInterceptor,
