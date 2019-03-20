@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { SpecialityService } from './../../../../services/speciality.service';
 
 @Component({
     selector: 'app-administration-speciality-card',
@@ -9,13 +10,17 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class AdministrationSpecialityCardComponent implements OnInit {
 
     specialityForm: FormGroup;
+    imgIconPath: string = 'D:\DKITProject\DKITProject\ClientApp\src\assets\images\icon_test.png';
+    isRequest: boolean = false;
 
-    constructor() { 
+    constructor(
+        private specialityService: SpecialityService
+    ) { 
         this.specialityForm = new FormGroup({
             'Name': new FormControl('', Validators.required),
             'Announce': new FormControl('', Validators.required),
             'Content': new FormControl('', Validators.required),
-            'ImgIcon': new FormControl(''),
+            'ControlNumber': new FormControl('', Validators.required)
         })
     }
 
@@ -23,7 +28,21 @@ export class AdministrationSpecialityCardComponent implements OnInit {
     }
 
     addSpeciality() {
+        this.isRequest = true;
+        this.specialityForm.addControl('ImgIcon', new FormControl(this.imgIconPath));
         console.log(this.specialityForm.getRawValue());
+        this.specialityService.addSpeciality(this.specialityForm.getRawValue()).subscribe((response: boolean) => {
+            console.log(response);
+            this.isRequest = false;
+            this.clear();
+        }, error => {
+            console.log(error);
+        });
+    }
+
+    clear() {
+        this.specialityForm.reset();
+        this.specialityForm.removeControl('ImgIcon');
     }
 
 }

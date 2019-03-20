@@ -61,7 +61,7 @@ namespace DKITProject.Administration.Controllers
                 Name = view.Name
             };
 
-            var newSpeciality = context.Specialties.Add(specialty);
+            var newSpeciality = await context.Specialties.AddAsync(specialty);
 
             ControlNumber controlNumber = new ControlNumber
             {
@@ -69,7 +69,7 @@ namespace DKITProject.Administration.Controllers
                 SpecialtyId = newSpeciality.Entity.Id
             };
 
-            context.ControlNumbers.Add(controlNumber);
+            await context.ControlNumbers.AddAsync(controlNumber);
             await context.SaveChangesAsync();
 
             return Ok(true);

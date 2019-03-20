@@ -28,13 +28,14 @@
     width: 100%;
 }
 
-label {
+.buttons {
     display:  flex;
     flex-direction: row;
     margin-top: 50px;
 }
 
-label input {
+.btn_clear,
+.btn_submit {
     width: 150px;
     height: 50px;
     font-size: 16px;
@@ -42,5 +43,31 @@ label input {
     outline: none;
     transition: .3s ease;
     margin-right: 25px;
+    border-radius: 4px;
+    background-color: transparent;
+    cursor: pointer;
 }
 
+.btn_submit {
+    background-color: #019de3;
+    color: #ffffff;
+}
+
+.btn_submit:hover {
+    background-color: transparent;
+    color: #019de3;
+}
+
+.btn_submit.disabled {
+    background-color: transparent;
+    color: #019de3;
+}
+
+.btn_clear {
+    color: #019de3;
+}
+
+.btn_clear:hover {
+    background-color: #019de3;
+    color: #ffffff;
+} 
