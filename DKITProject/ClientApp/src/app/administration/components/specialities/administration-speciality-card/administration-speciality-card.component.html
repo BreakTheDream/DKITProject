@@ -15,8 +15,8 @@
         </mat-form-field>
         <input type="file">
         <div class="buttons long">
-            <input type="submit" value="Добавить" class="btn_submit" [class.disabled]="isRequest || specialityForm.invalid" disabled="isRequest || specialityForm.invalid">
-            <button type="button" class="btn_clear" (click)="clear()">Очистить</button>
+            <input type="submit" value="Добавить" class="btn_submit" [class.disabled]="isRequest || specialityForm.invalid" [disabled]="isRequest || specialityForm.invalid">
+            <input type="button" value="Очистить" class="btn_clear" (click)="clear()">
         </div>
     </form>
 </div>
