@@ -1,15 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { SpecialityPreviewModel } from './../../../../models/speciality';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-speciality-block',
-  templateUrl: './speciality-block.component.html',
-  styleUrls: ['./speciality-block.component.css']
+    selector: 'app-speciality-block',
+    templateUrl: './speciality-block.component.html',
+    styleUrls: ['./speciality-block.component.css']
 })
 export class SpecialityBlockComponent implements OnInit {
 
-  constructor() { }
+    @Input()
+    entity: SpecialityPreviewModel;
 
-  ngOnInit() {
-  }
+    imgPath;
+
+    constructor(
+        private _sanitizer: DomSanitizer
+    ) { }
+
+    ngOnInit() {
+        this.imgPath = this._sanitizer.bypassSecurityTrustUrl(this.entity.imgIcon);
+    }
 
 }

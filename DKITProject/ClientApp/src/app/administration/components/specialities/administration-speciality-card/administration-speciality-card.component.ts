@@ -10,7 +10,7 @@ import { SpecialityService } from './../../../../services/speciality.service';
 export class AdministrationSpecialityCardComponent implements OnInit {
 
     specialityForm: FormGroup;
-    imgIconPath: string = 'D:\DKITProject\DKITProject\ClientApp\src\assets\images\icon_test.png';
+    imgIconPath: string = '/files/icon_test.png';
     isRequest: boolean = false;
 
     constructor(

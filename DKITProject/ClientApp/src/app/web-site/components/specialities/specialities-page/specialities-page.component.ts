@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { SpecialityPreviewModel } from './../../../../models/speciality';
 
 @Component({
   selector: 'app-specialities-page',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./specialities-page.component.css']
 })
 export class SpecialitiesPageComponent implements OnInit {
+
+  @Input()
+  entity: SpecialityPreviewModel[];
 
   constructor() { }
 

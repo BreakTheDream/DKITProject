@@ -1,21 +1,23 @@
-<div class="preview_block">
-		<div class="preview_img">
-			<div class="name_org">
-				<h2>ДКИТ</h2>
-				<p>Донской колледж<br>информационных<br>технологий</p>
+<ng-container *ngIf="mainPageInfo | async as entity">
+	<div class="preview_block">
+			<div class="preview_img">
+				<div class="name_org">
+					<h2>ДКИТ</h2>
+					<p>Донской колледж<br>информационных<br>технологий</p>
+				</div>
+				<div class="photo"></div>
 			</div>
-			<div class="photo"></div>
-		</div>
-	<div class="preview_info_wrap">
-		<div class="preview_info">
-			<h2>О Колледже</h2>
-			<p>
-				Наше учебное заведение существует с 1964
-				года, и все это время колледж создает условия
-				для реализации каждым гражданином его
-				способностей, таланта, разностороннего развития.</p>
-			<span [routerLink]="['/']">Подробнее</span>
+		<div class="preview_info_wrap">
+			<div class="preview_info">
+				<h2>О Колледже</h2>
+				<p>
+					Наше учебное заведение существует с 1964
+					года, и все это время колледж создает условия
+					для реализации каждым гражданином его
+					способностей, таланта, разностороннего развития.</p>
+				<span [routerLink]="['/']">Подробнее</span>
+			</div>
 		</div>
 	</div>
-</div>
-<app-specialities-page></app-specialities-page>
+	<app-specialities-page [entity]='entity.specialties'></app-specialities-page>
+</ng-container>

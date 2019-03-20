@@ -16,9 +16,9 @@ import { AppComponent } from './app.component';
 import { AuthService } from './services/auth.service';
 import { LocalStorageService } from './services/local-storage.service';
 import { SpecialityService } from './services/speciality.service';
+import { MainPageService } from './services/main-page.service';
 
 import { AuthInterceptor } from './interceptors/auth.interceptor';
-
 
 const ROUTES: Routes = [
     
@@ -43,6 +43,7 @@ const ROUTES: Routes = [
         AuthService,
         LocalStorageService,
         SpecialityService,
+        MainPageService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: AuthInterceptor,

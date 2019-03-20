@@ -9,13 +9,15 @@ import { LoginFormComponent } from './components/login-form/login-form.component
 import { MenuComponent } from './components/menu/menu.component';
 import { HeaderComponent } from './../layout/components/header/header.component';
 import { UserMenuComponent } from './components/user-menu/user-menu.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
     declarations: [
         HeaderComponent,
         MenuComponent,
         LoginFormComponent,
-        UserMenuComponent
+        UserMenuComponent,
+        LoaderComponent
     ],
     imports: [
         RouterModule,
@@ -28,7 +30,8 @@ import { UserMenuComponent } from './components/user-menu/user-menu.component';
         HeaderComponent,
         MenuComponent,
         LoginFormComponent, 
-        UserMenuComponent
+        UserMenuComponent,
+        LoaderComponent
     ]
 })
 

@@ -6,5 +6,6 @@ export const API_URLS = {
     GET_SPECIALITY_URL: '/api/getspecialitybyid/',
     GET_SPECIALITY_FOR_EDIT_URL: '/api/administration/getspecialitybyid/',
     GET_ALL_SPECIALITIES_URL: '/api/specialtieslist/',
-    DELETE_SPECIALITY_URL: '/api/administration/deletespecialitybyid/'
+    DELETE_SPECIALITY_URL: '/api/administration/deletespecialitybyid/',
+    MAIN_PAGE_INFO_URL: '/api/mainpageinfo'
 }

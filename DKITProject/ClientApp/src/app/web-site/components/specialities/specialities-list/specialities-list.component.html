@@ -1,12 +1,6 @@
-<div class="speciality">
-    <app-speciality-block></app-speciality-block>
-</div>
-<div class="speciality">
-    <app-speciality-block></app-speciality-block>
-</div>
-<div class="speciality">
-    <app-speciality-block></app-speciality-block>
-</div>
-<div class="speciality">
-    <app-speciality-block></app-speciality-block>
-</div>
+<ng-container *ngIf="entity$ | async as specialities">
+    <div class="speciality" *ngFor="let speciality of specialities">
+        <app-speciality-block [entity]="speciality" ></app-speciality-block>
+    </div>
+</ng-container>
+<p></p>
