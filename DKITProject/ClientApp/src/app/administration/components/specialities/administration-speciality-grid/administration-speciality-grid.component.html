@@ -1,0 +1,9 @@
+<ng-container *ngIf="entity$ | async as specialities">
+    <h2></h2>
+    <div class="wrap_grid">
+        <div class="speciality_block" [routerLink]="['/']" *ngFor="let speciality of specialities">
+            <img [src]="_sanitizer.bypassSecurityTrustUrl(speciality.imgIcon)" alt="icon">
+            <h3>{{speciality.name}}</h3>
+        </div>            
+    </div>    
+</ng-container>

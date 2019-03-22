@@ -9,10 +9,12 @@ import { MatInputModule } from '@angular/material';
 import { AdministrationMenuComponent } from './components/administration-menu/administration-menu.component';
 import { AdministrationPanelComponent } from './components/administration-panel/administration-panel.component';
 import { AdministrationSpecialityCardComponent } from './components/specialities/administration-speciality-card/administration-speciality-card.component';
+import { AdministrationSpecialityGridComponent } from './components/specialities/administration-speciality-grid/administration-speciality-grid.component';
 
 const ROUTES: Routes = [
     { path: 'administration', component: AdministrationPanelComponent, children: [
-        { path: 'specialities/card', component: AdministrationSpecialityCardComponent }
+        { path: 'specialities/card', component: AdministrationSpecialityCardComponent },
+        { path: 'specialities/grid', component: AdministrationSpecialityGridComponent }
     ] }
 ];
 
@@ -21,9 +23,10 @@ const ROUTES: Routes = [
         AdministrationMenuComponent,
         AdministrationPanelComponent,
         AdministrationSpecialityCardComponent,
+        AdministrationSpecialityGridComponent,
     ],
     imports: [
-    RouterModule.forChild(ROUTES),
+        RouterModule.forChild(ROUTES),
         BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
         ReactiveFormsModule,
         BrowserAnimationsModule,

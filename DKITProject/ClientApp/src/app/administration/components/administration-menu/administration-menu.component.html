@@ -3,7 +3,7 @@
         <span class="header_item" (click)="menuItemOpen('speciality')">Специальности</span>
         <div class="menu_items" [class.active]="states.isSpecialityMenuItemOpened.state">
             <span class="menu_item" [routerLink]="['specialities/card']">Добавить</span>
-            <span class="menu_item">Удалить/Редактировать</span>
+            <span class="menu_item" [routerLink]="['specialities/grid']">Удалить/Редактировать</span>
         </div>
     </div>
 </div>

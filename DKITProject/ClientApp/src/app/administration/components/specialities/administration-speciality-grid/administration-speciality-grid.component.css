@@ -1,0 +1,41 @@
+:host {
+    flex: 1;
+}
+
+.wrap_grid {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.speciality_block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    outline: none;
+    cursor: pointer;
+    transition: .3s ease;
+    border-radius: 5px;
+    width: 25%;
+}
+
+.speciality_block:hover {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, .4);
+}
+
+.speciality_block img {
+    height: 150px;
+}
+
+.speciality_block h3 {
+    color: #019de3;
+    font-size: 30px;
+    margin-top: 15px;
+    margin-top: 50px;
+    font-weight: 700;;
+}
