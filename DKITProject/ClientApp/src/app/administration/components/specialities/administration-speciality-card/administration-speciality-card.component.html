@@ -1,4 +1,4 @@
-<ng-container *ngIf="entity$ | async as entity">
+<ng-container *ngIf="!states.isLoading.state">
     <div class="card_wrap">
         <h2>Добавить специальность</h2>
         <form [formGroup]="specialityForm" (ngSubmit)="addSpeciality()" novalidate>
@@ -16,7 +16,13 @@
             </mat-form-field>
             <input type="file">
             <div class="buttons long">
-                <input type="submit" value="Добавить" class="btn_submit" [class.disabled]="isRequest || specialityForm.invalid" [disabled]="isRequest || specialityForm.invalid">
+                <input type="submit" value="Добавить" class="btn_submit" [class.disabled]="isRequest || specialityForm.invalid" 
+                                                                            [disabled]="isRequest || specialityForm.invalid"
+                                                                            *ngIf="!isEdit">
+                <input type="button" value="Изменить" class="btn_submit" (click)="editSpeciality()"
+                                                                            [class.disabled]="isRequest || specialityForm.invalid" 
+                                                                            [disabled]="isRequest || specialityForm.invalid"
+                                                                            *ngIf="isEdit">
                 <input type="button" value="Очистить" class="btn_clear" (click)="clear()">
             </div>
         </form>

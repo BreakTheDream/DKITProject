@@ -43,7 +43,7 @@ export class AdministrationSpecialityGridComponent implements OnInit {
     }
 
     edit(id: number) {
-        this.router.navigate([''])
+        this.router.navigate(['administration/specialities/card', id]);
     }
 
 }
