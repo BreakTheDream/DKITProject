@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using DKITProject.DAL;
 using DKITProject.ViewModel;
+using Microsoft.EntityFrameworkCore;
 
 namespace DKITProject.WebSite.Controllers
 {
@@ -40,7 +41,9 @@ namespace DKITProject.WebSite.Controllers
             if(id == null)
                 return BadRequest("Id is null");
 
-            var specialty = context.Specialties.FirstOrDefault(s => s.Id == id);
+            var specialities = context.Specialties.Include(s => s.ControlNumber);
+
+            var specialty = specialities.FirstOrDefault(s => s.Id == id);
 
             if(specialty == null)
                 return BadRequest("Speciality not found");
@@ -51,7 +54,7 @@ namespace DKITProject.WebSite.Controllers
                 Name = specialty.Name,
                 Content = specialty.Content,
                 ImgIcon = specialty.ImgIcon,
-                
+                ControlNumber = specialty.ControlNumber.Count
             });
         }
     }

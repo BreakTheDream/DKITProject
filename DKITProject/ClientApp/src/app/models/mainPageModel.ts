@@ -4,10 +4,8 @@ import { Partner } from './partner';
 import { Certificate } from './certificate'; 
 
 export class MainPageModel {
-    constructor(
-        public news: NewPreview[],
-        public specialties: SpecialityPreviewModel[],
-        public partners: Partner[],
-        public certificates: Certificate[]
-    ){}
+    news: NewPreview[];
+    specialties: SpecialityPreviewModel[];
+    partners: Partner[];
+    certificates: Certificate[];
 }

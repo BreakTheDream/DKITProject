@@ -1,10 +1,8 @@
 export class Achievement {
-    constructor(
-        public id: number,
-        public headline: string, 
-        public announce: string,
-        public imgPreview: string,
-        public content: string,
-        public images: string[]
-    ){}
+    id: number;
+    headline: string;
+    announce: string;
+    imgPreview: string;
+    content: string;
+    images: string[];
 }

@@ -1,20 +1,16 @@
 export class New {
-    constructor(
-        public id: number,
-        public headline: string,
-        public content: string,
-        public imgPreview: string,
-        public images: string[],
-        public datePost: Date
-    ){}
+    id: number;
+    headline: string;
+    content: string;
+    imgPreview: string;
+    images: string[];
+    datePost: Date;
 }
 
 export class NewPreview {
-    constructor(
-        public id: number,
-        public headline: string,
-        public content: string,
-        public imgPreview: string,
-        public datePost: Date
-    ){}
+    id: number;
+    headline: string;
+    content: string;
+    imgPreview: string;
+    datePost: Date;
 }

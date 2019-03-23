@@ -6,6 +6,7 @@ namespace DKITProject.ViewModel
         public string Name { get; set; }
         public string Content { get; set; }
         public string ImgIcon { get; set; }
+        public int ControlNumber { get; set; }
     }
 
     public class SpecialtyViewPreview {
