@@ -1,9 +1,15 @@
 <ng-container *ngIf="entity$ | async as specialities">
     <h2></h2>
     <div class="wrap_grid">
-        <div class="speciality_block" [routerLink]="['/']" *ngFor="let speciality of specialities">
-            <img [src]="_sanitizer.bypassSecurityTrustUrl(speciality.imgIcon)" alt="icon">
-            <h3>{{speciality.name}}</h3>
+        <div class="speciality_block" *ngFor="let speciality of specialities">
+            <div class="main_info" [routerLink]="['/']">
+                <img [src]="_sanitizer.bypassSecurityTrustUrl(speciality.imgIcon)" alt="icon">
+                <h3>{{speciality.name}}</h3>
+            </div>
+            <div class="actions">
+                <mat-icon (click)="delete(speciality.id)">clear</mat-icon>
+                <mat-icon>create</mat-icon>
+            </div>
         </div>            
     </div>    
 </ng-container>

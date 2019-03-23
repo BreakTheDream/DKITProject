@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { SpecialityService } from './../../../../services/speciality.service';
+import { ActivatedRoute } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { AdministrationSpecialityModel } from './../../../../models/speciality';
 
 @Component({
     selector: 'app-administration-speciality-card',
@@ -12,9 +16,12 @@ export class AdministrationSpecialityCardComponent implements OnInit {
     specialityForm: FormGroup;
     imgIconPath: string = '/files/icon_test.png';
     isRequest: boolean = false;
+    selectedId: number;
+    entity$: Observable<boolean>;
 
     constructor(
-        private specialityService: SpecialityService
+        private specialityService: SpecialityService,
+        private route: ActivatedRoute
     ) { 
         this.specialityForm = new FormGroup({
             'Name': new FormControl('', Validators.required),
@@ -25,6 +32,13 @@ export class AdministrationSpecialityCardComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.entity$ = this.route.paramMap.pipe(
+            switchMap(param => {
+                this.selectedId = +param.get('id');
+                return of(true);
+            })
+        )
+        console.log(this.entity$);
     }
 
     addSpeciality() {

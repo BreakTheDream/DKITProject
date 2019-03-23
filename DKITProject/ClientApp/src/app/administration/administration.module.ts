@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material';
+import {MatIconModule} from '@angular/material/icon';
 
 import { AdministrationMenuComponent } from './components/administration-menu/administration-menu.component';
 import { AdministrationPanelComponent } from './components/administration-panel/administration-panel.component';
@@ -13,7 +14,7 @@ import { AdministrationSpecialityGridComponent } from './components/specialities
 
 const ROUTES: Routes = [
     { path: 'administration', component: AdministrationPanelComponent, children: [
-        { path: 'specialities/card', component: AdministrationSpecialityCardComponent },
+        { path: 'specialities/card/:id', component: AdministrationSpecialityCardComponent },
         { path: 'specialities/grid', component: AdministrationSpecialityGridComponent }
     ] }
 ];
@@ -30,7 +31,8 @@ const ROUTES: Routes = [
         BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
         ReactiveFormsModule,
         BrowserAnimationsModule,
-        MatInputModule
+        MatInputModule,
+        MatIconModule
     ],
     exports: [
         AdministrationMenuComponent,

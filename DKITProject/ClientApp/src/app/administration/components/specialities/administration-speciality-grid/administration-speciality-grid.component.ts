@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { SpecialityService } from './../../../../services/speciality.service';
 import { Observable } from 'rxjs';
-import { SpecialityPreviewModel } from 'src/app/models/speciality';
+import { SpecialityPreviewModel } from './../../../../models/speciality';
 import { StatesDispatcher } from './../../../../states-store/states.dispatcher';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-administration-speciality-grid',
@@ -17,7 +18,8 @@ export class AdministrationSpecialityGridComponent implements OnInit {
     constructor(
         private specialityService: SpecialityService,
         private statesDispatcher: StatesDispatcher,
-        private _sanitizer: DomSanitizer
+        private _sanitizer: DomSanitizer,
+        private router: Router
     ) { }
 
     ngOnInit() {
@@ -28,6 +30,20 @@ export class AdministrationSpecialityGridComponent implements OnInit {
     getAll(pageNumber: number) {
         this.statesDispatcher.setIsLoading(true);
         this.entity$ = this.specialityService.getAllSpecialities(pageNumber);
+    }
+
+    delete(id: number) {
+        this.specialityService.deleteSpeciality(id).subscribe(resp => {
+            if(resp) {
+                this.getAll(1);
+            }
+        }, error => {
+            console.log(error);
+        })
+    }
+
+    edit(id: number) {
+        this.router.navigate([''])
     }
 
 }
