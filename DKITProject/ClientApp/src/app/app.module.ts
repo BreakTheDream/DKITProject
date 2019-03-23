@@ -17,6 +17,7 @@ import { AuthService } from './services/auth.service';
 import { LocalStorageService } from './services/local-storage.service';
 import { SpecialityService } from './services/speciality.service';
 import { MainPageService } from './services/main-page.service';
+import { NotificationService } from './services/notification.service';
 
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 
@@ -44,6 +45,7 @@ const ROUTES: Routes = [
         LocalStorageService,
         SpecialityService,
         MainPageService,
+        NotificationService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: AuthInterceptor,

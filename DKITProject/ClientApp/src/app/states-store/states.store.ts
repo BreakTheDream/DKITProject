@@ -13,6 +13,8 @@ export class StatesStore {
     readonly isUserMenuOpened = new StateProvider<boolean>(null);
     readonly isSpecialityMenuItemOpened = new StateProvider<boolean>(null);
     readonly isLoading = new StateProvider<boolean>(null);
+    readonly isNotificationActive = new StateProvider<boolean>(null);
+    readonly isErrorMessage = new StateProvider<string>(null);
 
     public clear() {
         this.isMenuOpened.state = null;
@@ -24,5 +26,7 @@ export class StatesStore {
         this.isUserMenuOpened.state = null;
         this.isSpecialityMenuItemOpened.state = null;
         this.isLoading.state = null;
+        this.isNotificationActive.state = null;
+        this.isErrorMessage.state = null;
     }
 }

@@ -10,6 +10,7 @@ import { MenuComponent } from './components/menu/menu.component';
 import { HeaderComponent } from './../layout/components/header/header.component';
 import { UserMenuComponent } from './components/user-menu/user-menu.component';
 import { LoaderComponent } from './components/loader/loader.component';
+import { NotificationComponent } from './components/notification/notification.component';
 
 @NgModule({
     declarations: [
@@ -17,7 +18,8 @@ import { LoaderComponent } from './components/loader/loader.component';
         MenuComponent,
         LoginFormComponent,
         UserMenuComponent,
-        LoaderComponent
+        LoaderComponent,
+        NotificationComponent
     ],
     imports: [
         RouterModule,
@@ -31,7 +33,8 @@ import { LoaderComponent } from './components/loader/loader.component';
         MenuComponent,
         LoginFormComponent, 
         UserMenuComponent,
-        LoaderComponent
+        LoaderComponent,
+        NotificationComponent
     ]
 })
 

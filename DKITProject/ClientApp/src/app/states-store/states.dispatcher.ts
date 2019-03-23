@@ -16,6 +16,8 @@ export class StatesDispatcher {
         this.states.isUserMenuOpened.state = false;
         this.states.isSpecialityMenuItemOpened.state = false;
         this.states.isLoading.state = false;
+        this.states.isNotificationActive.state = false;
+        this.states.isErrorMessage.state = '';
     }
 
     clear() {
@@ -56,6 +58,14 @@ export class StatesDispatcher {
 
     setIsLoading(value: boolean) {
         this.states.isLoading.state = value;
+    }
+
+    setIsNotificationActive(value: boolean) {
+        this.states.isNotificationActive.state = value;
+    }
+
+    setIsErrorMessage(value: string) {
+        this.states.isErrorMessage.state = value;
     }
 
 }

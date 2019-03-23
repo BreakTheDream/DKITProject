@@ -2,6 +2,7 @@
 <app-menu></app-menu>
 <app-user-menu *ngIf="states.isLogin.state"></app-user-menu>
 <app-login-form></app-login-form>
+<app-notification></app-notification>
 <div class="body_content">
     <app-loader *ngIf="states.isLoading.state"></app-loader>
     <router-outlet></router-outlet>
