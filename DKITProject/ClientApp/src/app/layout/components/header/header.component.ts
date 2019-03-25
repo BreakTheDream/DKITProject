@@ -3,6 +3,7 @@ import { StatesStore } from './../../../states-store/states.store';
 import { StatesDispatcher } from './../../../states-store/states.dispatcher';
 import { LocalStorageService } from './../../../services/local-storage.service';
 import { AuthService } from './../../../services/auth.service';
+import { NotificationService } from './../../../services/notification.service';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +16,8 @@ export class HeaderComponent implements OnInit {
     private states: StatesStore,
     private statesDispatcher: StatesDispatcher,
     private localStorageService: LocalStorageService,
-    private authService: AuthService
+    private authService: AuthService,
+    private notificationService: NotificationService
   ) { }
 
   menuClick() {
@@ -38,6 +40,7 @@ export class HeaderComponent implements OnInit {
     this.authService.checkAccess().subscribe(data => {
       this.authService.getUser();
     }, error => {
+      this.notificationService.setNotiofication(error.error ? error.error : error.statusText);
       console.log(error);
     })
   }

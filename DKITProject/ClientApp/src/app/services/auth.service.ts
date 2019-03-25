@@ -19,7 +19,6 @@ export class AuthService {
             tap(response => {
                 this.localStorageService.setUser(response);
             }),
-
         );
     }
 

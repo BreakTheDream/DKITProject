@@ -2,11 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { SpecialityService } from './../../../../services/speciality.service';
 import { ActivatedRoute } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
-import { Observable, of } from 'rxjs';
 import { AdministrationSpecialityModel } from './../../../../models/speciality';
 import { StatesDispatcher } from './../../../../states-store/states.dispatcher';
 import { StatesStore } from './../../../../states-store/states.store';
+import { NotificationService } from './../../../../services/notification.service';
 
 @Component({
     selector: 'app-administration-speciality-card',
@@ -26,7 +25,8 @@ export class AdministrationSpecialityCardComponent implements OnInit {
         private specialityService: SpecialityService,
         private route: ActivatedRoute,
         private statesDispatcher: StatesDispatcher,
-        private states: StatesStore
+        private states: StatesStore,
+        private notificationService: NotificationService
     ) { }
 
     ngOnInit() {
@@ -60,6 +60,7 @@ export class AdministrationSpecialityCardComponent implements OnInit {
             this.isRequest = false;
             this.clear();
         }, error => {
+            this.notificationService.setNotiofication(error.error ? error.error : error.statusText);
             this.isRequest = false;
             console.log(error);
         });
@@ -72,6 +73,7 @@ export class AdministrationSpecialityCardComponent implements OnInit {
             this.formReload();
             this.statesDispatcher.setIsLoading(false);
         }, error => {
+            this.notificationService.setNotiofication(error.error ? error.error : error.statusText);
             console.log(error);
         });
     }
@@ -82,6 +84,7 @@ export class AdministrationSpecialityCardComponent implements OnInit {
         this.specialityService.editSpeciality(this.specialityForm.getRawValue()).subscribe((resp: boolean) => {
             this.isRequest = false;
         }, error => {
+            this.notificationService.setNotiofication(error.error ? error.error : error.statusText);
             this.isRequest = false;
             console.log(error);
         })

@@ -5,6 +5,7 @@ import { SpecialityService } from './../../../../services/speciality.service';
 import { Observable, of } from 'rxjs';
 import { SpecialityModel } from './../../../../models/speciality';
 import { tap, map } from 'rxjs/operators';
+import { NotificationService } from './../../../../services/notification.service';
 
 @Component({
     selector: 'app-speciality-card',
@@ -20,7 +21,8 @@ export class SpecialityCardComponent implements OnInit {
     constructor(
         private route: ActivatedRoute,
         private statesDispatcher: StatesDispatcher,
-        private specialityService: SpecialityService
+        private specialityService: SpecialityService,
+        private notificationService: NotificationService
     ) { }
 
     ngOnInit() {
@@ -31,6 +33,7 @@ export class SpecialityCardComponent implements OnInit {
         this.entity$.subscribe(() => {
             this.statesDispatcher.setIsLoading(false)
         }, error => {
+            this.notificationService.setNotiofication(error.error ? error.error : error.statusText);
             console.log(error);
         })
     }

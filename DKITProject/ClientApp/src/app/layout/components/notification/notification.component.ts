@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StatesStore } from './../../../states-store/states.store';
 
 @Component({
   selector: 'app-notification',
@@ -7,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NotificationComponent implements OnInit {
 
-  constructor() { }
+  get ErrorMessage() {
+    return this.states.isErrorMessage.state;
+  }
+
+  constructor(
+    private states: StatesStore
+  ) { }
 
   ngOnInit() {
   }

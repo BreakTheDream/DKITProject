@@ -11,7 +11,6 @@ export class StatesDispatcher {
         this.states.isLoginFormOpened.state = false;
         this.states.isLogin.state = false;
         this.states.isAdmin.state = false;
-        this.states.isAuthFailed.state = false;
         this.states.isUserName.state = '';
         this.states.isUserMenuOpened.state = false;
         this.states.isSpecialityMenuItemOpened.state = false;
@@ -38,10 +37,6 @@ export class StatesDispatcher {
 
     setIsAdmin(value: boolean) {
         this.states.isAdmin.state = value;
-    }
-
-    setIsAuthFailed(value: boolean) {
-        this.states.isAuthFailed.state = value;
     }
 
     setUserName(value: string) {

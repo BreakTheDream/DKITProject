@@ -5,6 +5,7 @@ import { SpecialityPreviewModel } from './../../../../models/speciality';
 import { StatesDispatcher } from './../../../../states-store/states.dispatcher';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { NotificationService } from './../../../../services/notification.service';
 
 @Component({
     selector: 'app-administration-speciality-grid',
@@ -19,12 +20,18 @@ export class AdministrationSpecialityGridComponent implements OnInit {
         private specialityService: SpecialityService,
         private statesDispatcher: StatesDispatcher,
         private _sanitizer: DomSanitizer,
-        private router: Router
+        private router: Router,
+        private notificationService: NotificationService
     ) { }
 
     ngOnInit() {
         this.getAll(1);
-        this.entity$.subscribe(() => this.statesDispatcher.setIsLoading(false));
+        this.entity$.subscribe(() => {
+            this.statesDispatcher.setIsLoading(false)
+        }, error => {
+            this.notificationService.setNotiofication(error.error ? error.error : error.statusText);
+            console.log(error);
+        });
     }
 
     getAll(pageNumber: number) {
@@ -38,6 +45,7 @@ export class AdministrationSpecialityGridComponent implements OnInit {
                 this.getAll(1);
             }
         }, error => {
+            this.notificationService.setNotiofication(error.error ? error.error : error.statusText);
             console.log(error);
         })
     }
