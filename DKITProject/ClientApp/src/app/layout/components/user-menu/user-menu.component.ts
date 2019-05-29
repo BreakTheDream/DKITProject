@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { StatesStore } from './../../../states-store/states.store';
 import { AuthService } from './../../../services/auth.service';
+import { Router } from '@angular/router';
+import { StatesDispatcher } from '../../../states-store/states.dispatcher';
 
 @Component({
   selector: 'app-user-menu',
@@ -11,10 +13,17 @@ export class UserMenuComponent implements OnInit {
 
   constructor(
     private states: StatesStore,
-    private authService: AuthService
+    private statesDispatcher: StatesDispatcher,
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit() {
+  }
+
+  goAdminPanel() {
+    this.statesDispatcher.setIsUserMenuOpened(!this.states.isUserMenuOpened.state);
+    this.router.navigate(['administration']);
   }
 
   logOut() {
