@@ -13,6 +13,10 @@ export class StatesDispatcher {
         this.states.isAdmin.state = false;
         this.states.isUserName.state = '';
         this.states.isUserMenuOpened.state = false;
+        this.states.isNewMenuItemOpened.state = false;
+        this.states.isWorkshopMenuItemOpened.state = false;
+        this.states.isAdditionalEducationMenuItemOpened.state = false;
+        this.states.isFablabMenuItemOpened.state = false;
         this.states.isSpecialityMenuItemOpened.state = false;
         this.states.isLoading.state = false;
         this.states.isNotificationActive.state = false;
@@ -49,6 +53,19 @@ export class StatesDispatcher {
 
     setIsSpecialityMenuItemOpened(value: boolean) {
         this.states.isSpecialityMenuItemOpened.state = value;
+    }
+
+    setIsNewMenuItemOpened(value: boolean) {
+        this.states.isNewMenuItemOpened.state = value;
+    }
+    setIsWorkshopMenuItemOpened(value: boolean) {
+        this.states.isWorkshopMenuItemOpened.state = value;
+    }
+    setIsAdditionalEducationMenuItemOpened(value: boolean) {
+        this.states.isAdditionalEducationMenuItemOpened.state = value;
+    }
+    setIsFablabMenuItemOpened(value: boolean) {
+        this.states.isFablabMenuItemOpened.state = value;
     }
 
     setIsLoading(value: boolean) {

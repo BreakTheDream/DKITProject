@@ -17,7 +17,11 @@ export class AdministrationMenuComponent implements OnInit {
   ) { }
 
   menuStates = {
-    speciality: () => this.statesDispatcher.setIsSpecialityMenuItemOpened(!this.states.isSpecialityMenuItemOpened.state)
+    speciality: () => this.statesDispatcher.setIsSpecialityMenuItemOpened(!this.states.isSpecialityMenuItemOpened.state),
+    new: () => this.statesDispatcher.setIsNewMenuItemOpened(!this.states.isNewMenuItemOpened.state),
+    workshop: () => this.statesDispatcher.setIsWorkshopMenuItemOpened(!this.states.isWorkshopMenuItemOpened.state),
+    additionalEducation: () => this.statesDispatcher.setIsAdditionalEducationMenuItemOpened(!this.states.isAdditionalEducationMenuItemOpened),
+    fablab: () => this.statesDispatcher.setIsFablabMenuItemOpened(!this.states.isFablabMenuItemOpened.state)
   }
 
   ngOnInit() {

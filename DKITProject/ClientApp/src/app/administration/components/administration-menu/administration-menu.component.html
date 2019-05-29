@@ -6,4 +6,32 @@
             <span class="menu_item" [routerLink]="['specialities/grid']">Удалить/Редактировать</span>
         </div>
     </div>
+    <div class="menu_item_block">
+        <span class="header_item" (click)="menuItemOpen('new')">Новости</span>
+        <div class="menu_items" [class.active]="states.isNewMenuItemOpened.state">
+            <span class="menu_item" (click)="create()">Добавить</span>
+            <span class="menu_item" [routerLink]="['specialities/grid']">Удалить/Редактировать</span>
+        </div>
+    </div>
+    <div class="menu_item_block">
+        <span class="header_item" (click)="menuItemOpen('workshop')">Workshops</span>
+        <div class="menu_items" [class.active]="states.isWorkshopMenuItemOpened.state">
+            <span class="menu_item" (click)="create()">Добавить</span>
+            <span class="menu_item" [routerLink]="['specialities/grid']">Удалить/Редактировать</span>
+        </div>
+    </div>
+    <div class="menu_item_block">
+        <span class="header_item" (click)="menuItemOpen('additionalEducation')">Дополнительное образование</span>
+        <div class="menu_items" [class.active]="states.isAdditionalEducationMenuItemOpened.state">
+            <span class="menu_item" (click)="create()">Добавить</span>
+            <span class="menu_item" [routerLink]="['specialities/grid']">Удалить/Редактировать</span>
+        </div>
+    </div>
+    <div class="menu_item_block">
+        <span class="header_item" (click)="menuItemOpen('fablab')">Fablabs</span>
+        <div class="menu_items" [class.active]="states.isFablabMenuItemOpened.state">
+            <span class="menu_item" (click)="create()">Добавить</span>
+            <span class="menu_item" [routerLink]="['specialities/grid']">Удалить/Редактировать</span>
+        </div>
+    </div>
 </div>
